@@ -1,0 +1,25 @@
+/* confirmation.css for the confirmation fxml */
+
+.pane {
+    -fx-background-color: rgba(0, 128, 0, 0.15);  /* Slightly increased opacity for better visibility */
+    -fx-background-radius: 20px;
+    -fx-border-color: #009688;  /* Soft green border */
+    -fx-border-radius: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0, 0, 3);  /* Subtle shadow for depth */
+}
+
+.pane1 {
+    -fx-background-color: rgba(128, 0, 0, 0.15);  /* Slightly increased opacity for better visibility */
+    -fx-background-radius: 20px;
+    -fx-border-color: #FF5722;  /* Soft red border */
+    -fx-border-radius: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0, 0, 3);  /* Subtle shadow for depth */
+}
+
+.pane .label, .pane1 .label {
+    -fx-font-family: 'Roboto', 'Helvetica', 'sans-serif';  /* More modern font choice */
+    -fx-font-size: 14px;  /* Slightly larger font size for better readability */
+    -fx-font-weight: normal;
+    -fx-text-fill: #333333;  /* Darker text for contrast against light backgrounds */
+}
+

@@ -1,0 +1,50 @@
+/* insurance.css for the insurance FXML */
+
+/* General Styles for Insurance Coverage Panels */
+#limitedCoverPane, #basicCoverPane, #premiumCoverPane {
+    -fx-background-color: rgba(202, 202, 202, 0.4); /* Soft gray with transparency */
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px; /* Consistency in border rounding */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.18), 10, 0.3, 0, 3); /* Smoother shadows */
+}
+
+#limitedCoverPane:hover, #basicCoverPane:hover, #premiumCoverPane:hover {
+    -fx-background-color: rgba(202, 202, 202, 0.6); /* Darker on hover for feedback */
+    -fx-scale: 1.02; /* Slight scale effect to indicate interactiveness */
+}
+
+/* Styles for Summary Section */
+.summary {
+    -fx-background-color: rgba(202, 202, 202, 0.4);
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.18), 10, 0.3, 0, 3);
+}
+
+/* Styles for Insurance Buttons */
+.button-insurance {
+    -fx-background-radius: 50px;
+    -fx-background-color: rgba(86, 86, 86, 0.56); /* Semi-transparent dark gray */
+    -fx-text-fill: #ffffff; /* White text for better visibility */
+    -fx-font-weight: bold; /* Bold font for better legibility */
+    -fx-padding: 10px 20px; /* Adequate padding for clickability */
+}
+
+.button-insurance:hover {
+    -fx-cursor: hand;
+    -fx-background-color: rgba(86, 86, 86, 0.8); /* Slightly darker on hover */
+}
+
+/* Styles for Selected Buttons */
+.selected-button {
+    -fx-background-color: #4CAF50; /* Vibrant green for selection */
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0.1, 0, 2); /* Subtle shadow for depth */
+}
+
+/* Styles for Header */
+.header {
+    -fx-background-color: #000000c5; /* Semi-transparent black for header */
+    -fx-background-radius: 10px; /* Rounded corners at the top */
+    -fx-effect: dropshadow(three-pass-box, rgba(255, 255, 255, 0.21), 10, 0.5, 0, 3); /* White glow for prominence */
+}

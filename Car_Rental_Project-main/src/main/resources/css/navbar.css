@@ -1,0 +1,96 @@
+/* Navbar.css for the components such as the TableView, search bar, and choice boxes */
+
+/* Sidebar Styles */
+.anchor-pane {
+    -fx-background-color: #4b2cb9;
+    -fx-background-radius: 0 20 20 0;  /* Rounded corners on the right */
+}
+
+/* Search Bar Styles */
+#searchTxt {
+    -fx-background-color: transparent;
+}
+
+#searchChoiceBox {
+    -fx-background-color: transparent;
+}
+
+#searchChoiceBox .label {
+    -fx-text-fill: #333333;
+    -fx-font-size: 12px;
+    -fx-alignment: center;
+    -fx-font-family: 'Roboto', 'Arial', sans-serif;  /* Modern and readable font */
+}
+
+#searchChoiceBox .list-cell {
+    -fx-text-fill: #333333;
+    -fx-font-family: 'Roboto', 'Arial', sans-serif;
+}
+
+#searchHbox {
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 10, 0.3, 0, 3);  /* Smoother shadow effect */
+}
+
+/* Header Styles */
+#headerLabel {
+    -fx-text-fill: #333333;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 0 20px 0;  /* More balanced padding */
+}
+
+/* Table Styles */
+.table-view {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #dddddd;
+    -fx-border-width: 1px;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 10, 0.3, 0, 3);  /* Unified shadow styling */
+}
+
+.table-view .column-header {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #dddddd;
+    -fx-border-width: 0 0 1px 0;
+    -fx-font-family: 'Roboto', 'Arial', sans-serif;
+    -fx-text-fill: #333333;
+}
+
+.table-view .column-header .label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #333333;
+    -fx-font-weight: bold;
+    -fx-padding: 5px 0;
+}
+
+.table-cell {
+    -fx-text-fill: #333333;
+    -fx-font-size: 12px;
+    -fx-alignment: center;
+    -fx-font-family: 'Roboto', 'Arial', sans-serif;
+}
+
+/* Scroll Bar Styles */
+.scroll-bar {
+    -fx-background-color: #f4f4f4;
+}
+
+.scroll-bar:vertical .thumb,
+.scroll-bar:horizontal .thumb {
+    -fx-background-color: #cccccc;  /* Lighter gray for the thumb */
+}
+
+.scroll-bar:vertical .track,
+.scroll-bar:horizontal .track {
+    -fx-background-color: #f4f4f4;  /* Consistent track color */
+}
+
+.scroll-bar:vertical .increment-button,
+.scroll-bar:vertical .decrement-button,
+.scroll-bar:horizontal .increment-button,
+.scroll-bar:horizontal .decrement-button {
+    -fx-background-color: #dddddd;  /* Consistent button styling */
+}

@@ -1,0 +1,34 @@
+/* payments.css for the payments.fxml */
+
+/**
+ * Styles for the payment blocks
+ */
+.payment-blocks {
+    -fx-background-color: rgba(196, 194, 194, 0.27); /* Lighter background for a subtler appearance */
+    -fx-border-radius: 20px; /* Uniform rounded corners */
+    -fx-background-radius: 20px; /* Consistent background rounding */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0.3, 0, 5); /* Softer shadow for depth */
+}
+
+.payment-blocks:hover {
+    -fx-border-color: #8a2be2; /* Vivid purple for a striking hover effect */
+    -fx-border-radius: 20px;
+    -fx-border-width: 3px; /* Thicker border for emphasis */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0.3, 0, 5);
+    -fx-cursor: hand; /* Cursor changes to hand to indicate interactiveness */
+}
+
+.payment-blocks:hover .label, .payment-blocks.selected .label {
+    -fx-text-fill: #8a2be2; /* Consistent color for text on hover and selection */
+}
+
+.payment-blocks:hover #card, .payment-blocks.selected #card {
+    -fx-fill: #8a2be2; /* Ensuring the card icon also reflects the hover and selection state */
+}
+
+.payment-blocks.selected {
+    -fx-border-color: #8a2be2;
+    -fx-border-radius: 20px;
+    -fx-border-width: 3px; /* Emphasizing the selected state with a thicker border */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0.3, 0, 5); /* Maintaining shadow consistency */
+}

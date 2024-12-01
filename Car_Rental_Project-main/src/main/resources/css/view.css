@@ -1,0 +1,100 @@
+/* Views.css for the client and vehicle pages for adding, deleting, and updating */
+
+/* General Styles */
+#vehiclePane,
+#clientUpdatePane {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 20px;
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0.5, 0, 3); /* More subtle shadow */
+    -fx-font-family: 'Roboto', 'Arial', sans-serif; /* Modern and readable font */
+}
+
+#vehiclePane .text-field,
+#clientUpdatePane .text-field {
+    -fx-background-color: transparent;
+    -fx-text-fill: #707070; /* Slightly darker for better visibility */
+    -fx-font-family: 'Roboto', 'Arial', sans-serif;
+}
+
+#vehiclePane .label,
+#clientUpdatePane .label {
+    -fx-background-color: transparent;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Roboto', 'Arial', sans-serif;
+}
+
+/* Button Styles */
+.button-action {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-font-family: 'Roboto', 'Arial', sans-serif;
+}
+
+.button-action:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(135, 134, 134, 0.8), 5, 0.5, 0, 2);
+}
+
+.button-import {
+    -fx-cursor: hand;
+    -fx-background-color: #4b2cb9;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(three-pass-box, rgba(94, 94, 94, 0.8), 5, 0.5, 0, 2);
+    -fx-background-radius: 0 0 10 10;
+}
+
+.button-import:hover {
+    -fx-background-color: #5e4db1; /* Subtler transition for hover */
+}
+
+.button-import:pressed {
+    -fx-background-color: #392c7d; /* Darker color when pressed */
+    -fx-text-fill: #e0e0e0;
+    -fx-effect: none;
+}
+
+/* HBox Styles */
+HBox {
+    -fx-background-color: rgb(255, 255, 255);
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0.5, 0, 3);
+}
+
+HBox .text-field {
+    -fx-background-color: transparent;
+}
+
+/* ChoiceBox Styles */
+#choiceFuel {
+    -fx-background-color: transparent;
+}
+
+#choiceFuel .label {
+    -fx-text-fill: #909090;
+    -fx-font-size: 12px;
+    -fx-alignment: CENTER;
+    -fx-font-weight: normal;
+}
+
+#choiceFuel .list-cell {
+    -fx-text-fill: #333333;
+    -fx-font-weight: normal;
+}
+
+/* Import Pane Styles */
+#importPane {
+    -fx-background-color: #e0e0e0; /* Lighter grey for a cleaner look */
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.25), 15, 0.5, 0, 3);
+    -fx-font-family: 'Roboto', 'Arial', sans-serif;
+}
+
+/* Add Vehicle Pane Styles */
+#addVbox {
+    -fx-background-color: #4b2cb9;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.25), 15, 0.5, 0, 3);
+    -fx-background-radius: 0 10 10 0;
+}

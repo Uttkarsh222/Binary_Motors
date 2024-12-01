@@ -1,0 +1,78 @@
+/* vehicles.css for the vehicle images */
+
+/* ScrollPane Styles */
+.scroll-pane, .scroll-pane .viewport, .grid-pane {
+    -fx-background-color: white; /* Unified white background for cleanliness */
+}
+
+/* Vehicle Pane Styles */
+.vehicle-pane {
+    -fx-background-color: rgba(235, 235, 235, 0.78); /* Softened color for elegance */
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 30px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.15), 10, 0.5, 0, 3); /* Enhanced shadow for depth */
+    -fx-spacing: 10px;
+    -fx-alignment: center;
+    -fx-min-width: 300px;
+    -fx-pref-width: 300px;
+    -fx-max-width: 300px;
+    -fx-min-height: 400px;
+    -fx-pref-height: 400px;
+    -fx-max-height: 400px;
+}
+
+/* Vehicle Image Styles */
+.vehicle-image {
+    -fx-fit-width: 200px;
+    -fx-fit-height: 150px;
+    -fx-preserve-ratio: true;
+    -fx-smooth: true;
+}
+
+/* Vehicle Details Label Styles */
+.vehicle-brand-model-label, .vehicle-price-label {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+    -fx-font-family: 'Roboto', 'Arial', sans-serif;
+}
+
+.vehicle-year-label, .vehicle-price-lab, .vehicle-color-fueltype-label {
+    -fx-font-size: 15px;
+    -fx-text-fill: #4b2cb9;
+    -fx-font-family: 'Roboto', 'Arial', sans-serif;
+}
+
+.vehicle-price-lab {
+    -fx-font-size: 13px; /* Smaller size for subsidiary info */
+}
+
+/* Separator Styles */
+.separator {
+    -fx-background-color: #505050;
+    -fx-pref-height: 2px;
+    -fx-padding: 10px 0; /* Vertical padding for spacing */
+}
+
+/* Book Now Button Styles */
+.book-now-button {
+    -fx-background-color: #4b2cb9;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+}
+
+.book-now-button:hover {
+    -fx-background-color: #382d8c; /* Darker shade on hover for feedback */
+}
+
+/* Labels Grid Styles */
+.labels-grid {
+    -fx-hgap: 10px;
+    -fx-vgap: 10px;
+}

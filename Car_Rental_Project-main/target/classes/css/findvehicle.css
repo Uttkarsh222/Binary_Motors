@@ -1,0 +1,86 @@
+/* findvehicle.css for the findvehicle page */
+
+/* Navigation bar styling */
+.nav {
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 10, 0.5, 0, 3);
+}
+
+.nav .label {
+    -fx-font-weight: bold;
+    -fx-font-size: 14px; /* Increase font size for readability */
+    -fx-font-family: 'Roboto', 'Helvetica', 'sans-serif'; /* More modern font */
+}
+
+/* Styles for active and normal page indicators */
+.active-page {
+    -fx-text-fill: #2c3e50; /* Darker color for better visibility */
+    -fx-border-color: transparent transparent #3498db transparent; /* Brighter blue for clarity */
+    -fx-border-width: 0 0 4px 0; /* Slightly thicker border for emphasis */
+}
+
+.normal-page {
+    -fx-text-fill: #95a5a6; /* Light gray for non-active elements */
+}
+
+/* Container for date picking */
+.datepickBox {
+    -fx-background-color: #ffffff;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 10, 0.5, 0, 3);
+}
+
+.outerbox {
+    -fx-background-color: #ecf0f1; /* Lighter background for better contrast */
+    -fx-background-radius: 10px;
+}
+
+/* General styling for DatePicker */
+.datepicker {
+    -fx-background-color: transparent;
+}
+
+/* DatePicker text field enhancements */
+.datepicker .text-field {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-border-width: 0;
+    -fx-text-fill: #34495e; /* Darker text for better contrast */
+    -fx-padding: 5px 10px; /* Padding for easier text entry */
+    -fx-font-size: 14px; /* Larger font size */
+}
+
+/* Improved DatePicker arrow button */
+.datepicker .arrow-button {
+    -fx-background-color: rgba(189, 195, 199, 0.5);
+}
+
+.datepicker .arrow-button:hover {
+    -fx-cursor: hand;
+    -fx-background-color: rgba(189, 195, 199, 0.8); /* Darker on hover for feedback */
+}
+
+/* Popup calendar styling for better visual clarity */
+.date-picker-popup {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 10, 0.5, 0, 3);
+    -fx-padding: 10px;
+}
+
+/* Day cell interaction styling */
+.date-picker-popup .day-cell {
+    -fx-text-fill: #2c3e50;
+    -fx-background-color: transparent;
+}
+
+.date-picker-popup .day-cell:hover {
+    -fx-background-color: #bdc3c7; /* Light gray for hover */
+}
+
+.date-picker-popup .day-cell:selected {
+    -fx-background-color: #3498db; /* Consistent bright blue for selected days */
+    -fx-text-fill: #ffffff;
+}

@@ -1,0 +1,17 @@
+/* mybooking.css for the mybooking fxml */
+
+/* Styles for the boxes */
+.boxes {
+    -fx-background-color: rgba(202, 202, 202, 0.27); /* Softening the background color for better visual appeal */
+    -fx-border-radius: 20px; /* Consistent border rounding */
+    -fx-background-radius: 20px; /* Matching background rounding for a cohesive look */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0.3, 0, 5); /* Smoother shadow for a subtle depth effect */
+}
+
+.boxes .label {
+    -fx-font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif; /* Modern and readable font */
+    -fx-font-size: 14px; /* Optimized font size for better readability */
+    -fx-font-weight: bold; /* Bold text for emphasis */
+    -fx-text-fill: #333; /* Darker text color for better contrast against the light background */
+    -fx-padding: 8px 16px; /* Adequate padding for better content alignment */
+}

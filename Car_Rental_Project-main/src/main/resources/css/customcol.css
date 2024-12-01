@@ -1,0 +1,40 @@
+/* customcol.css for the custom buttons within the tableview columns */
+
+/* General button styles with more dynamic visual effects */
+.button-view, .button-update {
+    -fx-background-color: transparent;  /* Keeps button background transparent */
+    -fx-text-fill: rgba(0, 0, 0, 0.87);  /* Ensures text is readable */
+    -fx-font-weight: bold;  /* Bold text for better visibility */
+    -fx-font-family: "FontAwesome";  /* Icon font for graphical text */
+    -fx-font-size: 14px;  /* Increased font size for better legibility */
+    -fx-padding: 8px;  /* Slightly increased padding for a larger clickable area */
+    -fx-cursor: hand;  /* Cursor changes to hand on hover to indicate interactivity */
+    -fx-transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;  /* Smooth transitions for hover effects */
+}
+
+.button-view:hover, .button-update:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0.2, 0, 5);  /* More nuanced shadow effect */
+    -fx-background-color: rgba(220, 220, 220, 0.2);  /* Subtle background color change on hover */
+}
+
+/* Enhanced custom indicator styles for true/false states with smoother shapes */
+.square-true {
+    -fx-background-color: linear-gradient(to bottom, #06b006, #0d9a05);  /* Gradient green for true state */
+    -fx-min-width: 12px;  /* Slightly larger for better visibility */
+    -fx-min-height: 12px;
+    -fx-max-width: 12px;
+    -fx-max-height: 12px;
+    -fx-background-radius: 50%;  /* Perfect circle */
+    -fx-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);  /* Shadow for depth */
+}
+
+.square-false {
+    -fx-background-color: linear-gradient(to bottom, #ff6347, #d04531);  /* Gradient red for false state */
+    -fx-min-width: 12px;
+    -fx-min-height: 12px;
+    -fx-max-width: 12px;
+    -fx-max-height: 12px;
+    -fx-background-radius: 50%;  /* Maintains circular shape */
+    -fx-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);  /* Consistent styling with 'true' indicator */
+}
+

@@ -1,0 +1,75 @@
+/* buttons.css for general button styles */
+
+/**
+ * Base styles for all buttons.
+ */
+.button {
+    -fx-font-family: 'Roboto', 'sans-serif';
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 8px;
+    -fx-padding: 12px 24px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 5, 0.1, 0, 1);
+    -fx-border: none;
+}
+
+/**
+ * Styles for normal buttons.
+ */
+.button-normal {
+    -fx-background-color: rgba(63, 81, 181, 0.8);
+    -fx-text-fill: #FFFFFF;
+}
+
+.button-normal:hover {
+    -fx-background-color: rgba(63, 81, 181, 0.9);
+}
+
+.button-normal:pressed {
+    -fx-background-color: rgba(63, 81, 181, 1);
+    -fx-padding: 12px 24px;
+}
+
+/**
+ * Styles for active buttons in specific scenes.
+ */
+.button-active {
+    -fx-background-color: #FF5722;
+    -fx-text-fill: #FFFFFF;
+}
+
+/**
+ * Styles for signout buttons.
+ */
+.button-signout {
+    -fx-background-color: #E91E63;
+    -fx-text-fill: #FFFFFF;
+}
+
+.button-signout:hover {
+    -fx-background-color: #C2185B;
+}
+
+.button-signout:pressed {
+    -fx-background-color: #F8BBD0;
+    -fx-text-fill: #4A148C;
+}
+
+/**
+ * Styles for add vehicle buttons.
+ */
+.button-addvehicle {
+    -fx-background-color: #009688;
+    -fx-text-fill: #FFFFFF;
+}
+
+.button-addvehicle:hover {
+    -fx-background-color: #4DB6AC;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 15, 0.1, 0, 1);
+}
+
+.button-addvehicle:pressed {
+    -fx-background-color: #00796B;
+    -fx-text-fill: #B2DFDB;
+}

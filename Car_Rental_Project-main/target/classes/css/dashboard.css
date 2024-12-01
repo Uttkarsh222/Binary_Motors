@@ -1,0 +1,108 @@
+/* dashboard.css for the admin FXML */
+
+/**
+ * Styles for the first block with a more sophisticated color gradient.
+ */
+.block-one {
+    -fx-background-color: linear-gradient(to bottom right, #ca92f1, #ca92f144);
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.1, 0, 5);
+}
+
+/**
+ * Styles for the second block with a subtle color shift.
+ */
+.block-two {
+    -fx-background-color: linear-gradient(to bottom right, #d8db27, #d8db2744);
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.1, 0, 5);
+}
+
+/**
+ * Styles for the third block with a vibrant green gradient.
+ */
+.block-three {
+    -fx-background-color: linear-gradient(to bottom right, #54c427, #54c42744);
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.1, 0, 5);
+}
+
+/**
+ * Styles for the graph box with a soft pink background.
+ */
+.graphbox {
+    -fx-background-color: linear-gradient(to bottom right, #f5a4a4, #f5a4a444);
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.1, 0, 5);
+}
+
+/**
+ * General styles for charts with improved padding and background.
+ */
+.chart {
+    -fx-background-color: transparent;
+    -fx-padding: 20px;
+}
+
+/**
+ * Enhanced styles for chart titles with a larger, bolder font.
+ */
+.chart-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+    -fx-padding: 10px 0;
+}
+
+/**
+ * Styles for axis labels with better visibility.
+ */
+.axis-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #555;
+}
+
+/**
+ * Consistent styles for axis components.
+ */
+.axis, .axis .tick-mark, .axis .axis-line {
+    -fx-stroke: #ddd;
+    -fx-tick-label-fill: #555;
+    -fx-font-size: 12px;
+}
+
+/**
+ * Stylish defaults for line charts.
+ */
+.default-color0.chart-series-line,
+.default-color0.chart-line-symbol {
+    -fx-stroke: #007ACC;
+    -fx-stroke-width: 2px;
+    -fx-background-color: #007ACC, white;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-color: #007ACC;
+}
+
+/**
+ * Default styling for bar charts.
+ */
+.default-color0.chart-bar {
+    -fx-bar-fill: #007ACC;
+}
+
+/**
+ * Styles for chart legend items for consistency.
+ */
+.chart-legend-item-symbol, .chart-legend-item {
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+    -fx-font-size: 12px;
+    -fx-text-fill: #555;
+    -fx-font-family: 'Roboto', 'Helvetica', 'sans-serif';  /* Updated font for better readability */
+}
