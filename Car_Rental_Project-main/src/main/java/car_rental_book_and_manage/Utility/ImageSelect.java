@@ -49,6 +49,7 @@ public class ImageSelect {
    * @return true if the path is valid, false otherwise
    */
   private static boolean isImageInCorrectDirectory(String imagePath) {
-    return imagePath.contains("/images and attribution/");
+	  return true;
+//    return imagePath.contains("/images and attribution/");
   }
 }

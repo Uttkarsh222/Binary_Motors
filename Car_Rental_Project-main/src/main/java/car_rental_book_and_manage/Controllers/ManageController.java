@@ -10,6 +10,7 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.File;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Stack;
 import java.util.function.Predicate;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -32,8 +33,9 @@ import javafx.scene.paint.Color;
 /**
  * Controller for the Manage view. Handles initialization and setting up the table columns, search
  * functionality, and choice boxes.
+ * @param <T>
  */
-public class ManageController extends Controller {
+public class ManageController<T> extends Controller {
 
   @FXML private TableColumn<Vehicle, Void> colView;
   @FXML private TableColumn<Vehicle, Boolean> colAvail;
@@ -72,6 +74,9 @@ public class ManageController extends Controller {
   private String imageName;
   private Vehicle selectedVehicle;
   private boolean isDefaultImage = true;
+  
+  /*  Implemented a Stack to keep track of list updates over search functionality*/
+  private Stack<Vehicle> tableItems;
 
   /**
    * Initializes the controller, setting up the choice boxes, table columns, view button column, and
@@ -84,6 +89,7 @@ public class ManageController extends Controller {
     setUpViewButtonCol();
     addSearchListener();
     pane2.getStylesheets().add(getClass().getResource("/css/customcol.css").toExternalForm());
+    tableItems = new Stack<>();
   }
 
   /** Initializes the choice boxes with predefined values. */
@@ -148,12 +154,26 @@ public class ManageController extends Controller {
    */
   private void searchVehicle(Predicate<Vehicle> predicate) {
     for (int i = 0; i < tableVehicle.getItems().size(); i++) {
+    	System.out.println("Object type: " + tableVehicle.getItems().getClass());
       if (predicate.test(tableVehicle.getItems().get(i))) {
+    	  tableItems.add((tableVehicle.getItems().get(i)));
+    	  while(!tableItems.isEmpty()) {
+    	    	
+    	    	System.out.println("Vehicle: " + tableItems.pop().toString());
+    	    }
         tableVehicle.scrollTo(i);
         tableVehicle.getSelectionModel().select(i);
         return;
       }
+      
+      else {
+    	  if(tableItems.size() > 0) {
+    		  tableItems.pop();
+    	  }
+      }
     }
+    
+    
   }
 
   /** Sets up the table columns with their respective properties. */
