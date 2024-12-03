@@ -29,6 +29,7 @@ car_rental_book_and_manage\Controllers\FindVehiclesController$2.class
 car_rental_book_and_manage\Controllers\ManageController$2.class
 car_rental_book_and_manage\Controllers\PaymentController.class
 car_rental_book_and_manage\Controllers\MyBookingController$1.class
+car_rental_book_and_manage\Utility\QuickSort.class
 car_rental_book_and_manage\Objects\ReservationDAO.class
 car_rental_book_and_manage\Utility\ReservationManager.class
 car_rental_book_and_manage\Controllers\ManageController.class

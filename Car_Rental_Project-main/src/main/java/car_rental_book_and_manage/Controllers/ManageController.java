@@ -79,6 +79,7 @@ public class ManageController<T> extends Controller {
   private Stack<Vehicle> tableItems;
 
   /**
+   * 
    * Initializes the controller, setting up the choice boxes, table columns, view button column, and
    * search listener.
    */

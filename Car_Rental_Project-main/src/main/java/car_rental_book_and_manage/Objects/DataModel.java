@@ -5,6 +5,7 @@ import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import car_rental_book_and_manage.Utility.QuickSort;
 
 /**
  * Singleton class that serves as the data model for the car rental application. It manages clients,
@@ -61,6 +62,7 @@ public class DataModel {
    * @return the client list
    */
   public final ObservableList<Client> getClientList() {
+    QuickSort.quickSort(obClientList, 0, obClientList.size()-1);
     return obClientList;
   }
 
