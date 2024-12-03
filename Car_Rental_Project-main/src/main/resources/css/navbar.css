@@ -2,9 +2,10 @@
 
 /* Sidebar Styles */
 .anchor-pane {
-    -fx-background-color: #4b2cb9;
-    -fx-background-radius: 0 20 20 0;  /* Rounded corners on the right */
+    -fx-background-color: #000000; /* Changed background color to black */
+    -fx-background-radius: 0 20 20 0; /* Rounded corners on the right */
 }
+
 
 /* Search Bar Styles */
 #searchTxt {
