@@ -18,7 +18,6 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 
-/** Factory class for creating vehicle image panes with details and actions. */
 public class VehicleDisplayMaker {
 
   private final int paneWidth = 300;
@@ -27,13 +26,6 @@ public class VehicleDisplayMaker {
   private final int imageHeight = 190;
   private final Map<String, Image> imageCache = new HashMap<>();
 
-  /**
-   * Creates a pane for a vehicle with details and a "Book Now" button.
-   *
-   * @param vehicle the vehicle to display
-   * @param bookNowHandler the event handler for the "Book Now" button
-   * @return the pane containing the vehicle details and actions
-   */
   public Pane createVehiclePane(Vehicle vehicle, EventHandler<MouseEvent> bookNowHandler) {
     VBox pane = new VBox();
     pane.setPrefSize(paneWidth, paneHeight);
@@ -53,26 +45,20 @@ public class VehicleDisplayMaker {
     VBox.setVgrow(spacer, Priority.ALWAYS);
 
     pane.getChildren()
-        .addAll(
-            brandModelYearBox,
-            imageView,
-            spacer,
-            priceBox,
-            separator,
-            colorFuelTypeBox,
-            bookNowButton);
+            .addAll(
+                    brandModelYearBox,
+                    imageView,
+                    spacer,
+                    priceBox,
+                    separator,
+                    colorFuelTypeBox,
+                    bookNowButton);
     pane.setAlignment(Pos.CENTER);
     VBox.setVgrow(bookNowButton, Priority.NEVER);
 
     return pane;
   }
 
-  /**
-   * Creates an ImageView for the vehicle image.
-   *
-   * @param vehicle the vehicle to display
-   * @return the ImageView containing the vehicle image
-   */
   private ImageView createImageView(Vehicle vehicle) {
     ImageView vehicleImageView = new ImageView();
     vehicleImageView.getStyleClass().add("vehicle-image");
@@ -91,12 +77,6 @@ public class VehicleDisplayMaker {
     return vehicleImageView;
   }
 
-  /**
-   * Loads and resizes the image from the specified path.
-   *
-   * @param path the path to the image file
-   * @return the loaded and resized image
-   */
   private Image loadImage(String path) {
     try {
       return new Image(getClass().getResourceAsStream(path), imageWidth, imageHeight, true, true);
@@ -106,12 +86,6 @@ public class VehicleDisplayMaker {
     }
   }
 
-  /**
-   * Creates a VBox containing the brand, model, and year of the vehicle.
-   *
-   * @param vehicle the vehicle to display
-   * @return the VBox containing the brand, model, and year
-   */
   private VBox createBrandModelYearBox(Vehicle vehicle) {
     Label brandModelLabel = new Label(vehicle.getBrand() + " " + vehicle.getModel());
     brandModelLabel.getStyleClass().add("vehicle-brand-model-label");
@@ -124,12 +98,6 @@ public class VehicleDisplayMaker {
     return brandModelYearBox;
   }
 
-  /**
-   * Creates an HBox containing the price per day of the vehicle.
-   *
-   * @param vehicle the vehicle to display
-   * @return the HBox containing the price per day
-   */
   private HBox createPriceBox(Vehicle vehicle) {
     String formattedPrice = String.format("$ %.2f", vehicle.getPricePerDay());
     Label priceLabel = new Label(formattedPrice);
@@ -141,23 +109,12 @@ public class VehicleDisplayMaker {
     return priceBox;
   }
 
-  /**
-   * Creates a separator VBox.
-   *
-   * @return the VBox separator
-   */
   private VBox createSeparator() {
     VBox separator = new VBox();
     separator.getStyleClass().add("separator");
     return separator;
   }
 
-  /**
-   * Creates a VBox containing the vehicle specifications (color, fuel type, speed).
-   *
-   * @param vehicle the vehicle to display
-   * @return the VBox containing the vehicle specifications
-   */
   private VBox createVehicleSpecsBox(Vehicle vehicle) {
     HBox colorBox = createSpecBox(FontAwesomeIcon.ADJUST, vehicle.getColour());
     HBox fuelBox = createSpecBox(FontAwesomeIcon.THERMOMETER_FULL, vehicle.getFuelType());
@@ -182,13 +139,6 @@ public class VehicleDisplayMaker {
     return specsBox;
   }
 
-  /**
-   * Creates an HBox for a specific vehicle specification.
-   *
-   * @param icon the FontAwesomeIcon to use
-   * @param text the text to display
-   * @return the HBox containing the icon and text
-   */
   private HBox createSpecBox(FontAwesomeIcon icon, String text) {
     FontAwesomeIconView iconView = new FontAwesomeIconView(icon);
     iconView.setSize("15");
@@ -205,12 +155,6 @@ public class VehicleDisplayMaker {
     return specBox;
   }
 
-  /**
-   * Creates an HBox for the speed specification.
-   *
-   * @param vehicle the vehicle to display
-   * @return the HBox containing the speed icon and label
-   */
   private HBox createSpeedSpecBox(Vehicle vehicle) {
     FontAwesomeIconView speedIcon = new FontAwesomeIconView(FontAwesomeIcon.DASHBOARD);
     speedIcon.setSize("15");
@@ -227,12 +171,6 @@ public class VehicleDisplayMaker {
     return speedBox;
   }
 
-  /**
-   * Creates a "Book Now" button with the specified event handler.
-   *
-   * @param bookNowHandler the event handler for the "Book Now" button
-   * @return the "Book Now" button
-   */
   private Button createBookNowButton(EventHandler<MouseEvent> bookNowHandler) {
     Button bookNowButton = new Button("Book Now");
     bookNowButton.getStyleClass().add("book-now-button");

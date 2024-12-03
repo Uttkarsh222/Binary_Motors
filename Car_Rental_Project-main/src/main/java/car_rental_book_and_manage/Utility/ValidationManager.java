@@ -13,16 +13,7 @@ public class ValidationManager {
 
   private static final DataModel dataModel = DataModel.getInstance();
 
-  /**
-   * Checks if all sign-up user input fields are filled out.
-   *
-   * @param name The user's name.
-   * @param password The user's password.
-   * @param username The user's username.
-   * @param phoneNo The user's phone number.
-   * @param LicenceNo The user's license number.
-   * @return true if any field is empty, false otherwise.
-   */
+
   public static boolean isSignUpUserInputValid(
       String name, String password, String username, String phoneNo, String LicenceNo) {
     return name.isEmpty()
@@ -32,49 +23,23 @@ public class ValidationManager {
         || LicenceNo.isEmpty();
   }
 
-  /**
-   * Validates the user's name.
-   *
-   * @param name The user's name.
-   * @return true if the name contains only letters, false otherwise.
-   */
+
   public static boolean isNameValid(String name) {
     return name.matches("[a-zA-Z]+");
   }
 
-  /**
-   * Validates the user's phone number.
-   *
-   * @param phoneNo The user's phone number.
-   * @return true if the phone number is a 10-digit number, false otherwise.
-   */
+
   public static boolean isPhoneNoValid(String phoneNo) {
     return phoneNo.matches("\\d{10}");
   }
 
-  /**
-   * Validates the user's license number.
-   *
-   * @param license The user's license number.
-   * @return true if the license number matches the pattern, false otherwise.
-   */
+
   public static boolean isLicenseNoValid(String license) {
     String licNoPattern = "(?i)^[a-z]{4}\\d{4}$";
     return license.matches(licNoPattern);
   }
 
-  /**
-   * Checks if all vehicle input fields are filled out.
-   *
-   * @param brand The vehicle brand.
-   * @param model The vehicle model.
-   * @param makeYear The vehicle's manufacturing year.
-   * @param Colour The vehicle color.
-   * @param dailyRate The vehicle's daily rate.
-   * @param regNo The vehicle's registration number.
-   * @param fuelType The vehicle's fuel type.
-   * @return true if any field is empty, false otherwise.
-   */
+
   public static boolean isVehicleInputValid(
       String brand,
       String model,
@@ -95,13 +60,7 @@ public class ValidationManager {
         || economy.isEmpty();
   }
 
-  /**
-   * Checks if login input fields are filled out.
-   *
-   * @param username The user's username.
-   * @param password The user's password.
-   * @return false and shows an alert if any field is empty, true otherwise.
-   */
+
   public static boolean isLoginInputValid(String username, String password) {
     if (username.isEmpty() || password.isEmpty()) {
       AlertManager.showAlert(
@@ -111,12 +70,7 @@ public class ValidationManager {
     return true;
   }
 
-  /**
-   * Validates the year.
-   *
-   * @param year The year to validate.
-   * @return true if the year is between 1901 and the current year, false otherwise.
-   */
+
   public static boolean isYearValid(String year) {
     if (!year.matches("\\d{4}")) {
       return false;
@@ -127,91 +81,44 @@ public class ValidationManager {
     return yearValue >= MIN_YEAR && yearValue <= currentYear;
   }
 
-  /**
-   * Validates the daily rate.
-   *
-   * @param rate The daily rate to validate.
-   * @return true if the rate is a valid decimal number, false otherwise.
-   */
+
   public static boolean isDailyRateValid(String rate) {
     String decimalPattern = "^\\d*\\.?\\d+$";
     return rate.matches(decimalPattern);
   }
 
-  /**
-   * Validates the vehicle registration number.
-   *
-   * @param regNo The registration number to validate.
-   * @return true if the registration number matches the pattern, false otherwise.
-   */
+
   public static boolean isRegNoValid(String regNo) {
     String regNoPattern = "^[A-Z]{3}\\d{3}$";
     return regNo.matches(regNoPattern);
   }
 
-  /**
-   * Validates the vehicle color.
-   *
-   * @param colour The color to validate.
-   * @return true if the color contains only letters, false otherwise.
-   */
+
   public static boolean isColourValid(String colour) {
     return colour.matches("[a-zA-Z]+");
   }
 
-   /**
-   * Validates the vehicle fuel economy.
-   *
-   * @param fuelEconomy The fuel economy to validate.
-   * @return true if the fuel economy is a valid string containing exactly three digits, false otherwise.
-   */
+
   public static boolean isFuelEconomyValid(String fuelEconomy) {
     return fuelEconomy.matches("\\d{2,3}");
   }
 
-  /**
-   * Validates the CVV.
-   *
-   * @param cvv The CVV to validate.
-   * @return true if the CVV is a 3-digit number, false otherwise.
-   */
+
   public static boolean isCvvValid(String cvv) {
     return cvv.matches("\\d{3}");
   }
 
-  /**
- * Validates the card number.
- *
- * @param cardNumber The card number to validate.
- * @return true if the card number is 12 digits and contains a space after every 3 digits, false otherwise.
- */
+
 public static boolean isCardNumberValid(String cardNumber) {
     return cardNumber.matches("^\\d{3} \\d{3} \\d{3} \\d{3}$");
 }
 
-  /**
-   * Validates the expiry date.
-   *
-   * @param expiryDate The expiry date to validate.
-   * @return true if the expiry date is in the format MM/YY, false otherwise.
-   */
+
   public static boolean isExpiryDateValid(String expiryDate) {
     return expiryDate.matches("\\d{2}/\\d{2}");
   }
 
-  /**
-   * Validates all vehicle input fields.
-   *
-   * @param brand The vehicle brand.
-   * @param model The vehicle model.
-   * @param makeYear The vehicle's manufacturing year.
-   * @param colour The vehicle color.
-   * @param dailyRate The vehicle's daily rate.
-   * @param regNo The vehicle's registration number.
-   * @param fuelType The vehicle's fuel type.
-   * @param economy The vehicle's fuel economy.
-   * @return true if all fields are valid, false otherwise.
-   */
+
   public static boolean validateVehicleFields(
       String brand, String model, String makeYear, String colour, String dailyRate,
       String regNo, String fuelType, String economy) {
@@ -242,15 +149,7 @@ public static boolean isCardNumberValid(String cardNumber) {
     return true;
   }
 
-  /**
-   * Checks if vehicle registration number exists in the database and shows an alert if it does.
-   *
-   * @param regNo The registration number to check.
-   * @param action The action being performed ("save" or "update").
-   * @param vehicledb The vehicle database instance.
-   * @param id The vehicle ID (for update action).
-   * @return true if registration number exists, false otherwise.
-   */
+
   public static boolean checkRegistrationNoExists(
       String regNo, String action, VehicleDB vehicledb, String id) {
     // Additional validation for save action
@@ -280,17 +179,7 @@ public static boolean isCardNumberValid(String cardNumber) {
     return false;
   }
 
-    /**
-   * Validates all sign-up user input fields and checks for existing username.
-   *
-   * @param name The user's name.
-   * @param password The user's password.
-   * @param username The user's username.
-   * @param phoneNo The user's phone number.
-   * @param license The user's license number.
-   * @param clientdb The client database instance.
-   * @return true if all fields are valid and username doesn't exist, false otherwise.
-   */
+
   public static boolean validateSignUpUserInput(
       String name, String password, String username, String phoneNo, String license, ClientDB clientdb) {
     if (isSignUpUserInputValid(name, password, username, phoneNo, license)) {
@@ -316,15 +205,7 @@ public static boolean isCardNumberValid(String cardNumber) {
     return true;
   }
 
-   /**
-   * Validates the card details input fields.
-   *
-   * @param cardName The cardholder's name.
-   * @param cardNumber The card number.
-   * @param cvv The CVV number.
-   * @param expiryDate The expiry date.
-   * @return true if all fields are valid, false otherwise.
-   */
+
   public static boolean validateCardDetails(String cardName, String cardNumber, String cvv, String expiryDate) {
     if (cardName.isEmpty() || cardNumber.isEmpty() || cvv.isEmpty() || expiryDate.isEmpty()) {
       AlertManager.showAlert(AlertType.WARNING, "Required Fields", "Please Enter All Missing Fields");
