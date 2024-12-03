@@ -1,24 +1,24 @@
 /* Setting a unified and modern font across UI components */
 
 .label, .text, .button, .text-field {
-    -fx-font-family: 'Roboto', 'Helvetica Neue', 'Arial', sans-serif; /* Roboto offers a modern and clean appearance */
+    -fx-font-family: 'Arial', 'Verdana', 'Tahoma', sans-serif; /* Updated to universally available fonts */
     -fx-font-size: 14px; /* Standard font size for readability */
     -fx-font-weight: normal; /* Default weight for clarity and uniformity */
-    -fx-text-fill: #333; /* A darker shade for better text visibility */
+    -fx-text-fill: #333; /* Retains the original text color */
 }
 
 .label {
-    -fx-font-weight: bold; /* Labels are bold to distinguish from other text */
+    -fx-font-weight: bold; /* Labels remain bold to distinguish from other text */
 }
 
 .button {
-    -fx-font-weight: bold; /* Buttons are bold to enhance user interaction */
-    -fx-text-fill: #ffffff; /* White text for contrast on colored buttons */
+    -fx-font-weight: bold; /* Buttons remain bold for user interaction emphasis */
+    -fx-text-fill: #ffffff; /* Retains the white text color for buttons */
 }
 
 .text-field {
-    -fx-padding: 8px; /* Padding for text fields to improve text entry comfort */
-    -fx-border: 1px solid #ccc; /* Subtle borders for text fields */
-    -fx-background-color: #fff; /* White background for text fields to enhance focus */
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 2, 0, 0, 2); /* Soft shadow for depth */
+    -fx-padding: 8px; /* Retains padding for text fields */
+    -fx-border: 1px solid #ccc; /* Retains subtle borders for text fields */
+    -fx-background-color: #fff; /* White background retained for focus enhancement */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 2, 0, 0, 2); /* Retains soft shadow for depth */
 }
