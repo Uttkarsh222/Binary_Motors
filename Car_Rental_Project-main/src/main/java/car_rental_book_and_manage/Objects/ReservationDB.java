@@ -16,12 +16,7 @@ public class ReservationDB implements ReservationDAO {
 
   private static final DataModel model = DataModel.getInstance();
 
-  /**
-   * Saves a reservation and payment to the database.
-   *
-   * @param reservation the reservation to save
-   * @param payment the payment to save
-   */
+
   @Override
   public synchronized void saveReservationAndPayment(Reservation reservation, CardPayment payment) {
     App.reservationdbExecutor.execute(() -> {
@@ -62,12 +57,7 @@ public class ReservationDB implements ReservationDAO {
       }
     });
   }
-
-  /**
-   * Deletes a reservation and its associated payment from the database.
-   *
-   * @param reservationId the ID of the reservation to delete
-   */
+  
   @Override
   public synchronized void deleteReservationAndPayment(int reservationId) {
     App.reservationdbExecutor.execute(() -> {

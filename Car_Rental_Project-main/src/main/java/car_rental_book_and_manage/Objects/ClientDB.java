@@ -66,7 +66,6 @@ public class ClientDB implements ClientDAO {
         });
   }
 
-  /** Retrieves all clients from the database and adds them to the model. */
   @Override
   public synchronized void retrieveAllClients() {
     App.clientdbExecutor.execute(
@@ -87,7 +86,6 @@ public class ClientDB implements ClientDAO {
         });
   }
 
-  /** Retrieves the latest saved client from the database and adds it to the model. */
   @Override
   public synchronized void retrieveLatestClientToSave() {
     App.clientdbExecutor.execute(
@@ -218,7 +216,7 @@ public class ClientDB implements ClientDAO {
     client.setLicenseNo(resultSet.getString("License_no"));
     return client;
   }
-  
+
   private void handleSQLException(SQLException e) {
     System.err.println("Database error: " + e.getMessage());
   }
