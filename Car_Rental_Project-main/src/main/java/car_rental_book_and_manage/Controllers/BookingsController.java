@@ -14,10 +14,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-/**
- * Controller class for managing bookings. Handles the display, search, and filtering of
- * reservations in a table view.
- */
 public class BookingsController extends Controller {
 
   @FXML private TableColumn<Reservation, Integer> colRentalId;
@@ -34,7 +30,6 @@ public class BookingsController extends Controller {
   @FXML private ChoiceBox<String> searchChoiceBox;
   @FXML private Button cancelBtn;
 
-  /** Initializes the controller and sets up the table columns, choice box, and search listener. */
   public void initialize() {
     SceneManager.setController(Scenes.BOOKINGS, this);
     searchChoiceBox
@@ -45,7 +40,6 @@ public class BookingsController extends Controller {
     addSearchListener();
   }
 
-  /** Adds a listener to the search text field to filter reservations based on user input. */
   private void addSearchListener() {
     searchTxt
         .textProperty()
@@ -59,11 +53,6 @@ public class BookingsController extends Controller {
             });
   }
 
-  /**
-   * Searches for reservations based on the selected search option and user input value.
-   *
-   * @param value the search input value
-   */
   private void searchReservationBy(String value) {
     String searchOption = searchChoiceBox.getValue();
     switch (searchOption) {
@@ -98,11 +87,6 @@ public class BookingsController extends Controller {
     }
   }
 
-  /**
-   * Filters the reservation list based on the given predicate and selects the matching reservation.
-   *
-   * @param predicate the predicate to filter reservations
-   */
   private void searchReservation(Predicate<Reservation> predicate) {
     for (int i = 0; i < tableReservation.getItems().size(); i++) {
       if (predicate.test(tableReservation.getItems().get(i))) {
@@ -113,7 +97,6 @@ public class BookingsController extends Controller {
     }
   }
 
-  /** Sets up the table columns with appropriate property value factories and configurations. */
   private void setUpTableColumns() {
     colRentalId.setCellValueFactory(new PropertyValueFactory<>("reservationId"));
     colClientId.setCellValueFactory(new PropertyValueFactory<>("clientId"));
@@ -134,11 +117,6 @@ public class BookingsController extends Controller {
     tableReservation.setItems(dataModel.getReservationList());
   }
 
-  /**
-   * Sets the resizable property of all table columns.
-   *
-   * @param resizable the resizable property value
-   */
   private void setTableColumnsResizable(boolean resizable) {
     colRentalId.setResizable(resizable);
     colClientId.setResizable(resizable);

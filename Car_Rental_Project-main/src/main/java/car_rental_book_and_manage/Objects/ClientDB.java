@@ -10,16 +10,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/** Class for managing client database operations. */
 public class ClientDB implements ClientDAO {
 
   private static final DataModel model = DataModel.getInstance();
 
-  /**
-   * Saves a client to the database.
-   *
-   * @param client the client to save
-   */
   @Override
   public synchronized void saveClient(Client client) {
     App.clientdbExecutor.execute(
@@ -46,11 +40,6 @@ public class ClientDB implements ClientDAO {
         });
   }
 
-  /**
-   * Updates a client in the database.
-   *
-   * @param client the client to update
-   */
   @Override
   public synchronized void updateClient(Client client) {
     App.clientdbExecutor.execute(
@@ -119,11 +108,6 @@ public class ClientDB implements ClientDAO {
         });
   }
 
-  /**
-   * Retrieves a client by its ID and updates it in the model.
-   *
-   * @param clientId the ID of the client to retrieve
-   */
   @Override
   public synchronized void retrieveClientByIdToUpdate(int clientId) {
     App.clientdbExecutor.execute(
@@ -145,11 +129,6 @@ public class ClientDB implements ClientDAO {
         });
   }
 
-  /**
-   * Gets the total number of clients in the database.
-   *
-   * @return the total number of clients
-   */
   @Override
   public synchronized int getNumOfClients() {
     int totalClients = 0;
@@ -167,12 +146,6 @@ public class ClientDB implements ClientDAO {
     return totalClients;
   }
 
-  /**
-   * Checks if a username already exists in the database.
-   *
-   * @param username the username to check
-   * @return true if the username exists, false otherwise
-   */
   @Override
   public synchronized boolean doesUserNameExist(String username) {
     String sql = "SELECT COUNT(*) AS count FROM CLIENT WHERE USERNAME = ?";
@@ -190,13 +163,6 @@ public class ClientDB implements ClientDAO {
     return false;
   }
 
-  /**
-   * Checks if login credentials are valid.
-   *
-   * @param username the username to check
-   * @param password the password to check
-   * @return true if the credentials are valid, false otherwise
-   */
   @Override
   public synchronized boolean isLoginCredentialsValid(String username, String password) {
     String sql = "SELECT Pword FROM CLIENT WHERE Username = ?";
@@ -216,12 +182,6 @@ public class ClientDB implements ClientDAO {
     return false;
   }
 
-  /**
-   * Gets a client by username.
-   *
-   * @param username the username of the client
-   * @return the client with the specified username, or null if not found
-   */
   @Override
   public synchronized Client getClient(String username) {
     String sql = "SELECT * FROM CLIENT WHERE Username = ?";
@@ -239,13 +199,6 @@ public class ClientDB implements ClientDAO {
     return null;
   }
 
-  /**
-   * Sets the parameters for a client in a prepared statement.
-   *
-   * @param statement the prepared statement
-   * @param client the client to set the parameters for
-   * @throws SQLException if a database access error occurs
-   */
   private void setClientStatementParams(PreparedStatement statement, Client client)
       throws SQLException {
     statement.setString(1, client.getFirstName());
@@ -255,13 +208,6 @@ public class ClientDB implements ClientDAO {
     statement.setString(5, client.getLicenseNo());
   }
 
-  /**
-   * Maps a result set to a client object.
-   *
-   * @param resultSet the result set to map
-   * @return the client object
-   * @throws SQLException if a database access error occurs
-   */
   private Client mapResultSetToClient(ResultSet resultSet) throws SQLException {
     Client client = new Client();
     client.setClientId(resultSet.getInt("C_Id"));
@@ -272,12 +218,7 @@ public class ClientDB implements ClientDAO {
     client.setLicenseNo(resultSet.getString("License_no"));
     return client;
   }
-
-  /**
-   * Handles SQL exceptions by printing the error message.
-   *
-   * @param e the SQL exception to handle
-   */
+  
   private void handleSQLException(SQLException e) {
     System.err.println("Database error: " + e.getMessage());
   }
