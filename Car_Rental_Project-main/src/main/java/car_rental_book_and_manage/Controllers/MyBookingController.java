@@ -15,10 +15,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-/**
- * Controller for the MyBooking view. Handles displaying and managing the details of a client's
- * reservation.
- */
 public class MyBookingController extends Controller {
 
   @FXML private Label fuelLbl;
@@ -56,7 +52,6 @@ public class MyBookingController extends Controller {
     }
   }
 
-  /** Sets up a listener to handle changes in the logged-in client. */
   private void setupClientChangeListener() {
     reservationManager
         .loggedInClientProperty()
@@ -74,7 +69,7 @@ public class MyBookingController extends Controller {
             });
   }
 
-  /** Sets up a listener to handle changes in the current reservation. */
+
   private void setupReservationChangeListener() {
     reservationManager
         .currentReservationProperty()
@@ -88,11 +83,6 @@ public class MyBookingController extends Controller {
             });
   }
 
-  /**
-   * Loads the reservation details for the given client.
-   *
-   * @param client the logged-in client
-   */
   private void loadReservationDetails(Client client) {
     Reservation reservation = reservationdb.getReservationForClient(client.getClientId());
     if (reservation != null) {
@@ -105,11 +95,6 @@ public class MyBookingController extends Controller {
     }
   }
 
-  /**
-   * Displays the reservation details for the given reservation.
-   *
-   * @param reservation the reservation to display
-   */
   private void displayReservationDetails(Reservation reservation) {
     Vehicle bookedVehicle = reservationManager.getSelectedVehicle();
     if (bookedVehicle != null) {
@@ -121,11 +106,6 @@ public class MyBookingController extends Controller {
     }
   }
 
-  /**
-   * Updates the UI with the details of the booked vehicle.
-   *
-   * @param bookedVehicle the booked vehicle
-   */
   private void updateVehicleDetails(Vehicle bookedVehicle) {
     brandLbl.setText(bookedVehicle.getBrand());
     modelLbl.setText(bookedVehicle.getModel());
@@ -138,11 +118,6 @@ public class MyBookingController extends Controller {
             getClass().getResourceAsStream("/images and attribution/" + bookedVehicle.getImage())));
   }
 
-  /**
-   * Updates the UI with the details of the reservation.
-   *
-   * @param reservation the reservation
-   */
   private void updateReservationDetails(Reservation reservation) {
     pickUpLbl.setText(reservation.getStartDate().toString());
     returnLbl.setText(reservation.getReturnDate().toString());
@@ -152,16 +127,10 @@ public class MyBookingController extends Controller {
     totalAmountLbl.setText(String.format("$%.2f", reservation.getTotalRate()));
   }
 
-  /** Clears the reservation details from the UI. */
   private void clearReservationDetails() {
     toggleDetailsVisibility(false);
   }
 
-  /**
-   * Toggles the visibility of the reservation details.
-   *
-   * @param visible whether the details should be visible
-   */
   private void toggleDetailsVisibility(boolean visible) {
     bookingDetailsVBox.setVisible(visible);
     vehicleDetailsVBox.setVisible(visible);

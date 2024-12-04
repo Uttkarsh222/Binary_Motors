@@ -4,11 +4,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-/** utility class for managing configuration properties. 
- * 
- * Just a method to handle JDBC credentials until connection to server side.
- * 
-*/
 public class ConfigManager {
   private static final Properties props = new Properties();
 
@@ -21,13 +16,6 @@ public class ConfigManager {
     }
   }
 
-  /**
-   * Retrieves the property value associated with the given key.
-   *
-   * @param key the key whose associated value is to be retrieved
-   * @return the value associated with the key
-   * @throws RuntimeException if the property key is not found
-   */
   public static String getProperty(String key) {
     String value = props.getProperty(key);
     if (value == null) {

@@ -19,7 +19,6 @@ public abstract class Controller {
   protected final DataModel dataModel;
   protected final ReservationManager reservationManager;
 
-  /** Constructor for initializing the controller with necessary database and model instances. */
   public Controller() {
     clientdb = new ClientDB();
     vehicledb = new VehicleDB();
@@ -28,51 +27,26 @@ public abstract class Controller {
     reservationManager = ReservationManager.getInstance();
   }
 
-  /**
-   * Handles the event to view customers.
-   *
-   * @param event the mouse event
-   */
   @FXML
   protected void onViewCustomers(MouseEvent event) {
     App.setUi(Scenes.CUSTOMERS);
   }
 
-  /**
-   * Handles the event to view bookings.
-   *
-   * @param event the mouse event
-   */
   @FXML
   protected void onViewBookings(MouseEvent event) {
     App.setUi(Scenes.BOOKINGS);
   }
 
-  /**
-   * Handles the event to manage vehicles.
-   *
-   * @param event the mouse event
-   */
   @FXML
   protected void onManageVehicles(MouseEvent event) {
     App.setUi(Scenes.MANAGE);
   }
 
-  /**
-   * Handles the event to view the dashboard.
-   *
-   * @param event the mouse event
-   */
   @FXML
   protected void onDashBoard(MouseEvent event) {
     App.setUi(Scenes.ADMIN);
   }
 
-  /**
-   * Handles the event to sign out the user.
-   *
-   * @param event the mouse event
-   */
   @FXML
   protected void onSignOut(MouseEvent event) {
     App.setUi(Scenes.LOGIN);
@@ -81,21 +55,11 @@ public abstract class Controller {
     reservationManager.clearSession();
   }
 
-  /**
-   * Handles the event to view the user's booking.
-   *
-   * @param event the mouse event
-   */
   @FXML
   protected void onMyBooking(MouseEvent event) {
     App.setUi(Scenes.MYBOOKING);
   }
 
-  /**
-   * Handles the event to find vehicles.
-   *
-   * @param event the mouse event
-   */
   @FXML
   protected void onFindVehicles(MouseEvent event) {
     App.setUi(Scenes.FINDVEHICLES);

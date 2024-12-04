@@ -23,10 +23,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
-/**
- * Controller class for managing customers. Handles the display, search, and update of customer
- * information.
- */
 public class CustomersController extends Controller {
 
   @FXML private AnchorPane clientUpdatePane;
@@ -47,7 +43,6 @@ public class CustomersController extends Controller {
   @FXML private TextField txtPhone;
   @FXML private Label clientNoLbl;
 
-  /** Initializes the controller and sets up the table columns, choice box, and search listener. */
   public void initialize() {
     SceneManager.setController(Scenes.CUSTOMERS, this);
     setUpTableColumns();
@@ -58,13 +53,11 @@ public class CustomersController extends Controller {
     pane2.getStylesheets().add(getClass().getResource("/css/customcol.css").toExternalForm());
   }
 
-  /** Sets up the search choice box with available options. */
   private void setUpSearchChoiceBox() {
     searchChoiceBox.getItems().addAll("ID", "License Number");
     searchChoiceBox.setValue("ID");
   }
 
-  /** Adds a listener to the search text field to filter clients based on user input. */
   private void addSearchListener() {
     searchTxt
         .textProperty()
@@ -78,11 +71,6 @@ public class CustomersController extends Controller {
             });
   }
 
-  /**
-   * Searches for clients based on the selected search option and user input value.
-   *
-   * @param value the search input value
-   */
   private void searchClientBy(String value) {
     String searchOption = searchChoiceBox.getValue();
     switch (searchOption) {
@@ -102,11 +90,6 @@ public class CustomersController extends Controller {
     }
   }
 
-  /**
-   * Filters the client list based on the given predicate and selects the matching client.
-   *
-   * @param predicate the predicate to filter clients
-   */
   private void searchClient(Predicate<Client> predicate) {
     for (int i = 0; i < tableClient.getItems().size(); i++) {
       if (predicate.test(tableClient.getItems().get(i))) {
@@ -117,7 +100,6 @@ public class CustomersController extends Controller {
     }
   }
 
-  /** Sets up the table columns with appropriate property value factories and configurations. */
   private void setUpTableColumns() {
     colId.setCellValueFactory(new PropertyValueFactory<>("clientId"));
     colName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
@@ -130,7 +112,6 @@ public class CustomersController extends Controller {
     setTableColumnsWidthAndResizable();
   }
 
-  /** Sets the width and resizable property of all table columns. */
   private void setTableColumnsWidthAndResizable() {
     colId.setPrefWidth(120);
     colName.setPrefWidth(180);
@@ -145,7 +126,6 @@ public class CustomersController extends Controller {
     colUpdate.setResizable(false);
   }
 
-  /** Sets up the update button column with appropriate action handlers. */
   private void setUpUpdateButtonCol() {
     colUpdate.setCellFactory(
         param ->
@@ -171,12 +151,6 @@ public class CustomersController extends Controller {
               }
             });
   }
-
-  /**
-   * Creates the update button with appropriate styles and icon.
-   *
-   * @return the created update button
-   */
   private Button createUpdateButton() {
     Button updateButton = new Button();
     updateButton.getStyleClass().add("button-view");
@@ -191,12 +165,6 @@ public class CustomersController extends Controller {
     updateButton.setAlignment(Pos.CENTER);
     return updateButton;
   }
-
-  /**
-   * Handles the update button action to display client information in the update pane.
-   *
-   * @param client the client to be updated
-   */
   private void handleUpdateButtonAction(Client client) {
     showUpdatePane(true);
     clientUpdatePane.requestFocus();
@@ -207,36 +175,19 @@ public class CustomersController extends Controller {
     txtLicense.setText(client.getLicenseNo());
   }
 
-  /**
-   * Shows or hides the update pane.
-   *
-   * @param show whether to show or hide the update pane
-   */
+
   private void showUpdatePane(boolean show) {
     clientUpdatePane.setVisible(show);
     pane1.setDisable(show);
     pane2.setDisable(show);
   }
 
-  /**
-   * Handles the update of a client with the given information.
-   *
-   * @param clientId the client ID
-   * @param firstName the first name
-   * @param phone the phone number
-   * @param license the license number
-   */
   private void handleUpdateClient(int clientId, String firstName, String phone, String license) {
     Client updatedClient = new Client(clientId, firstName, phone, license);
     clientdb.updateClient(updatedClient);
     showUpdatePane(false);
   }
 
-  /**
-   * Handles the update client button action.
-   *
-   * @param event the mouse event
-   */
   @FXML
   void onUpdateClient(MouseEvent event) {
     String firstName = txtName.getText();
@@ -257,11 +208,6 @@ public class CustomersController extends Controller {
     handleUpdateClient(clientId, firstName, phoneNo, licenseNo);
   }
 
-  /**
-   * Handles the cancel update button action.
-   *
-   * @param event the mouse event
-   */
   @FXML
   void onCancelUpdate(MouseEvent event) {
     showUpdatePane(false);

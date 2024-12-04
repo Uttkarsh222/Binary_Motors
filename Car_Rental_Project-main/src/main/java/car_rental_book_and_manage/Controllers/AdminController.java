@@ -9,10 +9,6 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-/**
- * Controller class for the Admin scene. Manages the admin dashboard, including displaying
- * statistics and managing vehicles.
- */
 public class AdminController extends Controller {
 
   @FXML private Label customerLbl;
@@ -24,7 +20,6 @@ public class AdminController extends Controller {
   @FXML private Button viewCustomersBtn;
   @FXML private PieChart piechart;
 
-  /** Initializes the controller and sets up bindings and listeners. */
   public void initialize() {
     SceneManager.setController(Scenes.ADMIN, this);
     setupBindings();
@@ -33,32 +28,27 @@ public class AdminController extends Controller {
     addVehicleListChangeListener();
   }
 
-  /** Sets up the bindings for the labels. */
   private void setupBindings() {
     vehicleLbl.textProperty().bind(dataModel.numOfVehiclesProperty());
     customerLbl.textProperty().bind(dataModel.numOfClientsProperty());
     earningsLbl.textProperty().bind(dataModel.totalEarningsProperty());
   }
 
-  /** Updates the data model with the latest counts from the database. */
   private void updateDataModel() {
     dataModel.setNumOfVehicles(String.valueOf(vehicledb.getNumOfVehicles()));
     dataModel.setNumOfClients(String.valueOf(clientdb.getNumOfClients()));
   }
 
-  /** Initializes the PieChart with the current data. */
   private void initializePieChart() {
     updatePieChart();
   }
 
-  /** Adds a listener to update the PieChart when the vehicle list changes. */
   private void addVehicleListChangeListener() {
     dataModel
         .getVehicleList()
         .addListener((ListChangeListener<? super Vehicle>) change -> updatePieChart());
   }
 
-  /** Updates the PieChart with the latest available and booked cars data. */
   private void updatePieChart() {
     int availableCars = dataModel.getNumOfAvailableCars();
     int bookedCars = dataModel.getNumOfBookedCars();

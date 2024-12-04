@@ -16,12 +16,7 @@ public class ReservationDB implements ReservationDAO {
 
   private static final DataModel model = DataModel.getInstance();
 
-  /**
-   * Saves a reservation and payment to the database.
-   *
-   * @param reservation the reservation to save
-   * @param payment the payment to save
-   */
+
   @Override
   public synchronized void saveReservationAndPayment(Reservation reservation, CardPayment payment) {
     App.reservationdbExecutor.execute(() -> {
@@ -63,11 +58,6 @@ public class ReservationDB implements ReservationDAO {
     });
   }
 
-  /**
-   * Deletes a reservation and its associated payment from the database.
-   *
-   * @param reservationId the ID of the reservation to delete
-   */
   @Override
   public synchronized void deleteReservationAndPayment(int reservationId) {
     App.reservationdbExecutor.execute(() -> {
@@ -165,12 +155,6 @@ public class ReservationDB implements ReservationDAO {
     return null;
   }
 
-  /**
-   * Gets a list of reservations that need to be dropped by a specific date.
-   *
-   * @param date the date to check for overdue reservations
-   * @return the list of reservations to drop
-   */
   @Override
   public synchronized List<Reservation> getReservationsToDrop(LocalDate date) {
     List<Reservation> reservationsToDrop = new ArrayList<>();
@@ -190,13 +174,6 @@ public class ReservationDB implements ReservationDAO {
     return reservationsToDrop;
   }
 
-  /**
-   * Sets the parameters for a reservation in a prepared statement.
-   *
-   * @param statement the prepared statement
-   * @param reservation the reservation to set the parameters for
-   * @throws SQLException if a database access error occurs
-   */
   private void setReservationStatementParams(PreparedStatement statement, Reservation reservation) throws SQLException {
     statement.setInt(1, reservation.getClientId());
     statement.setInt(2, reservation.getVehicleId());
@@ -208,13 +185,6 @@ public class ReservationDB implements ReservationDAO {
     statement.setString(8, reservation.getInsuranceType());
   }
 
-  /**
-   * Sets the parameters for a payment in a prepared statement.
-   *
-   * @param statement the prepared statement
-   * @param payment the payment to set the parameters for
-   * @throws SQLException if a database access error occurs
-   */
   private void setPaymentStatementParams(PreparedStatement statement, CardPayment payment) throws SQLException {
     statement.setInt(1, payment.getRentalId());
     statement.setInt(2, payment.getClientId());
@@ -223,13 +193,6 @@ public class ReservationDB implements ReservationDAO {
     statement.setString(5, payment.getPaymentType());
   }
 
-  /**
-   * Maps a result set to a reservation object.
-   *
-   * @param resultSet the result set to map
-   * @return the reservation object
-   * @throws SQLException if a database access error occurs
-   */
   private Reservation mapResultSetToReservation(ResultSet resultSet) throws SQLException {
     Reservation reservation = new Reservation();
     reservation.setReservationId(resultSet.getInt("Rental_Id"));
@@ -244,11 +207,6 @@ public class ReservationDB implements ReservationDAO {
     return reservation;
   }
 
-  /**
-   * Handles SQL exceptions by printing the error message.
-   *
-   * @param e the SQL exception to handle
-   */
   private void handleSQLException(SQLException e) {
     System.err.println("Database error: " + e.getMessage());
   }
