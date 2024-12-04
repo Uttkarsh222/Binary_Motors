@@ -1,25 +1,111 @@
-/* confirmation.css for the confirmation fxml */
+/* dashboard.css for the admin FXML */
 
-.pane {
-    -fx-background-color: rgba(0, 128, 0, 0.15);  /* Slightly increased opacity for better visibility */
-    -fx-background-radius: 20px;
-    -fx-border-color: #009688;  /* Soft green border */
+/**
+ * Styles for the first block with a new color gradient.
+ */
+.block-one {
+    -fx-background-color: linear-gradient(to bottom right, #87CEEB, #87CEEB44); /* Sky blue */
     -fx-border-radius: 20px;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0, 0, 3);  /* Subtle shadow for depth */
-}
-
-.pane1 {
-    -fx-background-color: rgba(128, 0, 0, 0.15);  /* Slightly increased opacity for better visibility */
     -fx-background-radius: 20px;
-    -fx-border-color: #FF5722;  /* Soft red border */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.1, 0, 5);
+}
+
+/**
+ * Styles for the second block with a fresh gradient.
+ */
+.block-two {
+    -fx-background-color: linear-gradient(to bottom right, #FFD700, #FFD70044); /* Golden yellow */
     -fx-border-radius: 20px;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0, 0, 3);  /* Subtle shadow for depth */
+    -fx-background-radius: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.1, 0, 5);
 }
 
-.pane .label, .pane1 .label {
-    -fx-font-family: 'Roboto', 'Helvetica', 'sans-serif';  /* More modern font choice */
-    -fx-font-size: 14px;  /* Slightly larger font size for better readability */
-    -fx-font-weight: normal;
-    -fx-text-fill: #333333;  /* Darker text for contrast against light backgrounds */
+/**
+ * Styles for the third block with a teal gradient.
+ */
+.block-three {
+    -fx-background-color: linear-gradient(to bottom right, #20B2AA, #20B2AA44); /* Light sea green */
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.1, 0, 5);
 }
 
+/**
+ * Styles for the graph box with a soft lavender background.
+ */
+.graphbox {
+    -fx-background-color: linear-gradient(to bottom right, #E6E6FA, #E6E6FA44); /* Lavender */
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.1, 0, 5);
+}
+
+/**
+ * General styles for charts with improved padding and background.
+ */
+.chart {
+    -fx-background-color: transparent;
+    -fx-padding: 20px;
+}
+
+/**
+ * Enhanced styles for chart titles with a larger, bolder font.
+ */
+.chart-title {
+    -fx-font-size: 20px; /* Increased size for emphasis */
+    -fx-font-weight: bold;
+    -fx-text-fill: #222; /* Darker text for better visibility */
+    -fx-font-family: 'Arial', 'Helvetica', 'sans-serif'; /* Updated font */
+    -fx-padding: 10px 0;
+}
+
+/**
+ * Styles for axis labels with better visibility.
+ */
+.axis-label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #444; /* Slightly darker for better contrast */
+    -fx-font-family: 'Arial', 'Helvetica', 'sans-serif';
+}
+
+/**
+ * Consistent styles for axis components.
+ */
+.axis, .axis .tick-mark, .axis .axis-line {
+    -fx-stroke: #ccc; /* Lighter stroke */
+    -fx-tick-label-fill: #444;
+    -fx-font-size: 14px;
+    -fx-font-family: 'Arial', 'Helvetica', 'sans-serif';
+}
+
+/**
+ * Stylish defaults for line charts.
+ */
+.default-color0.chart-series-line,
+.default-color0.chart-line-symbol {
+    -fx-stroke: #32CD32; /* Lime green for vibrancy */
+    -fx-stroke-width: 2px;
+    -fx-background-color: #32CD32, white;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-color: #32CD32;
+}
+
+/**
+ * Default styling for bar charts.
+ */
+.default-color0.chart-bar {
+    -fx-bar-fill: #32CD32; /* Lime green */
+}
+
+/**
+ * Styles for chart legend items for consistency.
+ */
+.chart-legend-item-symbol, .chart-legend-item {
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #444; /* Slightly darker text */
+    -fx-font-family: 'Arial', 'Helvetica', 'sans-serif';
+}
