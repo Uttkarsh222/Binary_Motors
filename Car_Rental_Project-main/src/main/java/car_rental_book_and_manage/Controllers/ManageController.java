@@ -111,6 +111,7 @@ public class ManageController<T> extends Controller {
   }
 
 
+
   private Predicate<Vehicle> getSearchPredicate(String searchOption, String value) {
     switch (searchOption) {
       case "Registration":

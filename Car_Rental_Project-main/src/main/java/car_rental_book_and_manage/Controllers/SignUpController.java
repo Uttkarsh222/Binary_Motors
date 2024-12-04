@@ -16,6 +16,9 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class SignUpController extends Controller {
 
   @FXML private Button createAccBtn;
@@ -26,9 +29,10 @@ public class SignUpController extends Controller {
   @FXML private TextField nameField;
   @FXML private TextField phoneField;
 
+
+
   public void initialize() {
     SceneManager.setController(Scenes.SIGNUP, this);
-
     nameField.addEventFilter(KeyEvent.KEY_PRESSED, this::onEnter);
     passwordField.addEventFilter(KeyEvent.KEY_PRESSED, this::onEnter);
     usernameField.addEventFilter(KeyEvent.KEY_PRESSED, this::onEnter);
@@ -96,7 +100,9 @@ public class SignUpController extends Controller {
     String license = licenseField.getText().toUpperCase();
     // hash the password
     String hashedPassword = PIIHashManager.hashPassword(password);
-    return new Client(username, hashedPassword, name, phoneNo, license);
+    Client newClient = new Client(username, hashedPassword, name, phoneNo, license);
+    ClientHashing.clientData.put(username, newClient);
+    return newClient;
   }
 
   @FXML

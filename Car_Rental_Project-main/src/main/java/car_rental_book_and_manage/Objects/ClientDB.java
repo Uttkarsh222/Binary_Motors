@@ -1,6 +1,7 @@
 package car_rental_book_and_manage.Objects;
 
 import car_rental_book_and_manage.App;
+import car_rental_book_and_manage.Controllers.ClientHashing;
 import car_rental_book_and_manage.Utility.DataManager;
 import car_rental_book_and_manage.Utility.PIIHashManager;
 
@@ -9,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Map;
 
 public class ClientDB implements ClientDAO {
 
@@ -163,21 +165,31 @@ public class ClientDB implements ClientDAO {
 
   @Override
   public synchronized boolean isLoginCredentialsValid(String username, String password) {
-    String sql = "SELECT Pword FROM CLIENT WHERE Username = ?";
-    try (Connection connection = DataManager.getConnection();
-        PreparedStatement statement = connection.prepareStatement(sql)) {
-      statement.setString(1, username);
-      try (ResultSet resultSet = statement.executeQuery()) {
-        if (resultSet.next()) {
-          String storedHashedPassword = resultSet.getString("Pword");
-          // Verify the provided password with the stored hashed password
-          return PIIHashManager.checkPassword(password, storedHashedPassword);
+
+    Map<String, Client> clientData = ClientHashing.clientData;
+
+    Client currentUser = clientData.get(username);
+
+    if(currentUser != null) return PIIHashManager.checkPassword(password, currentUser.getPassword());
+
+    else{
+      String sql = "SELECT Pword FROM CLIENT WHERE Username = ?";
+      try (Connection connection = DataManager.getConnection();
+           PreparedStatement statement = connection.prepareStatement(sql)) {
+        statement.setString(1, username);
+        try (ResultSet resultSet = statement.executeQuery()) {
+          if (resultSet.next()) {
+            String storedHashedPassword = resultSet.getString("Pword");
+            // Verify the provided password with the stored hashed password
+            return PIIHashManager.checkPassword(password, storedHashedPassword);
+          }
         }
+      } catch (SQLException e) {
+        handleSQLException(e);
       }
-    } catch (SQLException e) {
-      handleSQLException(e);
+      return false;
     }
-    return false;
+
   }
 
   @Override

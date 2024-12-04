@@ -32,6 +32,7 @@ car_rental_book_and_manage\Controllers\MyBookingController$1.class
 car_rental_book_and_manage\Utility\QuickSort.class
 car_rental_book_and_manage\Objects\ReservationDAO.class
 car_rental_book_and_manage\Utility\ReservationManager.class
+car_rental_book_and_manage\Controllers\ClientHashing.class
 car_rental_book_and_manage\Controllers\ManageController.class
 car_rental_book_and_manage\Objects\DataModel.class
 car_rental_book_and_manage\Utility\SceneManager$Scenes.class
