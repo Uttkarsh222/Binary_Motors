@@ -4,72 +4,73 @@
  * Base styles for all buttons.
  */
 .button {
-    -fx-font-family: 'Roboto', 'sans-serif';
+    -fx-font-family: 'Arial', 'sans-serif'; /* Changed font to Arial */
     -fx-font-size: 14px;
     -fx-font-weight: bold;
     -fx-border-radius: 8px;
     -fx-padding: 12px 24px;
     -fx-cursor: hand;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 5, 0.1, 0, 1);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0.1, 0, 1);
     -fx-border: none;
+    -fx-text-fill: black; /* Default font color black */
 }
 
 /**
  * Styles for normal buttons.
  */
 .button-normal {
-    -fx-background-color: rgba(63, 81, 181, 0.8);
-    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #FFFFFF; /* White background */
+    -fx-text-fill: black;          /* Black text */
 }
 
 .button-normal:hover {
-    -fx-background-color: rgba(63, 81, 181, 0.9);
+    -fx-background-color: #E0E0E0; /* Light gray on hover */
 }
 
 .button-normal:pressed {
-    -fx-background-color: rgba(63, 81, 181, 1);
-    -fx-padding: 12px 24px;
+    -fx-background-color: #BDBDBD; /* Slightly darker gray on press */
+    -fx-padding: 11px 23px;        /* Simulate click effect */
 }
 
 /**
  * Styles for active buttons in specific scenes.
  */
 .button-active {
-    -fx-background-color: #FF5722;
-    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #4CAF50; /* Green for highlighted/active buttons */
+    -fx-text-fill: #FFFFFF;        /* White text */
 }
 
 /**
- * Styles for signout buttons.
+ * Styles for signout and sign-in buttons.
  */
-.button-signout {
-    -fx-background-color: #E91E63;
-    -fx-text-fill: #FFFFFF;
+.button-signout, .button-signin {
+    -fx-background-color: #FFFFFF; /* White background */
+    -fx-text-fill: black;          /* Black text */
+    -fx-border: 2px solid black;   /* Optional: add a border to stand out */
 }
 
-.button-signout:hover {
-    -fx-background-color: #C2185B;
+.button-signout:hover, .button-signin:hover {
+    -fx-background-color: #E0E0E0; /* Light gray on hover */
 }
 
-.button-signout:pressed {
-    -fx-background-color: #F8BBD0;
-    -fx-text-fill: #4A148C;
+.button-signout:pressed, .button-signin:pressed {
+    -fx-background-color: #BDBDBD; /* Slightly darker gray on press */
 }
 
 /**
  * Styles for add vehicle buttons.
  */
 .button-addvehicle {
-    -fx-background-color: #009688;
-    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #FFFFFF; /* White background */
+    -fx-text-fill: black;          /* Black text */
 }
 
 .button-addvehicle:hover {
-    -fx-background-color: #4DB6AC;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 15, 0.1, 0, 1);
+    -fx-background-color: #E0F2F1; /* Light green tint */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 15, 0.1, 0, 1);
 }
 
 .button-addvehicle:pressed {
-    -fx-background-color: #00796B;
-    -fx-text-fill: #B2DFDB;
+    -fx-background-color: #C8E6C9; /* Slightly darker green tint */
+    -fx-text-fill: #000000;        /* Keep black text */
 }
