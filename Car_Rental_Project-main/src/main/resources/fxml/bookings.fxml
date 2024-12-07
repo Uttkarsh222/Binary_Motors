@@ -91,26 +91,26 @@
             </Label>
             <TableView fx:id="tableReservation" layoutX="9.0" layoutY="137.0" prefHeight="458.0" prefWidth="782.0" stylesheets="@../css/navbar.css">
               <columns>
-                  <TableColumn fx:id="colRentalId" editable="false" prefWidth="58" sortable="false" text="Rental_id" />
-                  <TableColumn fx:id="colClientId" editable="false" prefWidth="69.66160583496094" sortable="false" text="Client_id" />
-                  <TableColumn fx:id="colVehicleId" editable="false" prefWidth="75.83840942382812" sortable="false" text="Vehicle_id" />
-                  <TableColumn fx:id="colVehicleReg" editable="false" prefWidth="95.59991455078125" sortable="false" text="Vehicle_reg" />
-                  <TableColumn fx:id="colLicenseNum" editable="false" prefWidth="93.69985961914062" sortable="false" text="License_num" />
-                  <TableColumn fx:id="colTotalRate" editable="false" prefWidth="87.29974365234375" sortable="false" text="Total_rate" />
-                  <TableColumn fx:id="colStartDate" editable="false" prefWidth="101.16162109375" sortable="false" text="Start_date" />
-                  <TableColumn fx:id="colReturnDate" editable="false" prefWidth="93.25372314453125" sortable="false" text="Return_date" />
-                  <TableColumn fx:id="colInsuranceType" editable="false" prefWidth="98.02301025390625" sortable="false" text="Insurance_type" />
+                  <TableColumn fx:id="bookingColRentalId" editable="false" prefWidth="58" sortable="false" text="Rental_id" />
+                  <TableColumn fx:id="bookingColClientId" editable="false" prefWidth="69.66160583496094" sortable="false" text="Client_id" />
+                  <TableColumn fx:id="bookingColVehicleId" editable="false" prefWidth="75.83840942382812" sortable="false" text="Vehicle_id" />
+                  <TableColumn fx:id="bookingColVehicleReg" editable="false" prefWidth="95.59991455078125" sortable="false" text="Vehicle_reg" />
+                  <TableColumn fx:id="bookingColLicenseNum" editable="false" prefWidth="93.69985961914062" sortable="false" text="License_num" />
+                  <TableColumn fx:id="bookingColTotalRate" editable="false" prefWidth="87.29974365234375" sortable="false" text="Total_rate" />
+                  <TableColumn fx:id="bookingColStartDate" editable="false" prefWidth="101.16162109375" sortable="false" text="Start_date" />
+                  <TableColumn fx:id="bookingColReturnDate" editable="false" prefWidth="93.25372314453125" sortable="false" text="Return_date" />
+                  <TableColumn fx:id="bookingColInsuranceType" editable="false" prefWidth="98.02301025390625" sortable="false" text="Insurance_type" />
               </columns>
             </TableView>
             <HBox fx:id="searchHbox" alignment="CENTER" layoutX="10.0" layoutY="78.0" prefHeight="30.0" prefWidth="379.0" stylesheets="@../css/navbar.css">
                <children>
                   <FontAwesomeIconView glyphName="SEARCH" wrappingWidth="14.21856689453125" />
-                  <TextField fx:id="searchTxt" prefHeight="25.0" prefWidth="216.0" promptText="Search">
+                  <TextField fx:id="customersearchTxt" prefHeight="25.0" prefWidth="216.0" promptText="Search">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                   </TextField>
-                  <ChoiceBox fx:id="searchChoiceBox" prefHeight="27.0" prefWidth="115.0">
+                  <ChoiceBox fx:id="customersearchChoiceBox" prefHeight="27.0" prefWidth="115.0">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>

@@ -10,6 +10,7 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.File;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Stack;
 import java.util.function.Predicate;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -29,11 +30,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
-/**
- * Controller for the Manage view. Handles initialization and setting up the table columns, search
- * functionality, and choice boxes.
- */
-public class ManageController extends Controller {
+
+public class ManageController<T> extends Controller {
 
   @FXML private TableColumn<Vehicle, Void> colView;
   @FXML private TableColumn<Vehicle, Boolean> colAvail;
@@ -65,18 +63,17 @@ public class ManageController extends Controller {
   @FXML private TextField txtEconomy;
   @FXML private Label titleLbl;
   @FXML private Label idLbl;
-  @FXML private ChoiceBox<String> searchChoiceBox;
-  @FXML private TextField searchTxt;
+  @FXML private ChoiceBox<String> customersearchChoiceBox;
+  @FXML private TextField customersearchTxt;
   @FXML private ImageView vehicleImageView;
 
   private String imageName;
   private Vehicle selectedVehicle;
   private boolean isDefaultImage = true;
+  
+  /*  Implemented a Stack to keep track of list updates over search functionality*/
+  private Stack<Vehicle> tableItems;
 
-  /**
-   * Initializes the controller, setting up the choice boxes, table columns, view button column, and
-   * search listener.
-   */
   public void initialize() {
     SceneManager.setController(Scenes.MANAGE, this);
     initializeChoiceBoxes();
@@ -84,21 +81,18 @@ public class ManageController extends Controller {
     setUpViewButtonCol();
     addSearchListener();
     pane2.getStylesheets().add(getClass().getResource("/css/customcol.css").toExternalForm());
+    tableItems = new Stack<>();
   }
 
-  /** Initializes the choice boxes with predefined values. */
   private void initializeChoiceBoxes() {
     choiceFuel.getItems().addAll("Regular", "Diesel", "Premium");
     choiceFuel.setValue("Regular");
-    searchChoiceBox.setValue("ID");
-    searchChoiceBox.getItems().addAll("ID", "Registration");
+    customersearchChoiceBox.setValue("ID");
+    customersearchChoiceBox.getItems().addAll("ID", "Registration");
   }
 
-  /**
-   * Adds a listener to the search text field to filter the table based on the entered search value.
-   */
   private void addSearchListener() {
-    searchTxt
+    customersearchTxt
         .textProperty()
         .addListener(
             (observable, oldValue, newValue) -> {
@@ -110,24 +104,14 @@ public class ManageController extends Controller {
             });
   }
 
-  /**
-   * Searches for a vehicle based on the search value and option (ID or Registration).
-   *
-   * @param value the search value
-   */
   private void searchVehicleBy(String value) {
-    String searchOption = searchChoiceBox.getValue();
+    String searchOption = customersearchChoiceBox.getValue();
     Predicate<Vehicle> predicate = getSearchPredicate(searchOption, value);
     searchVehicle(predicate);
   }
 
-  /**
-   * Returns a predicate based on the search option and value.
-   *
-   * @param searchOption the search option (ID or Registration)
-   * @param value the search value
-   * @return a predicate to filter the vehicles
-   */
+
+
   private Predicate<Vehicle> getSearchPredicate(String searchOption, String value) {
     switch (searchOption) {
       case "Registration":
@@ -141,22 +125,31 @@ public class ManageController extends Controller {
     }
   }
 
-  /**
-   * Searches for a vehicle in the table based on the given predicate.
-   *
-   * @param predicate the predicate to filter the vehicles
-   */
+
   private void searchVehicle(Predicate<Vehicle> predicate) {
     for (int i = 0; i < tableVehicle.getItems().size(); i++) {
+    	System.out.println("Object type: " + tableVehicle.getItems().getClass());
       if (predicate.test(tableVehicle.getItems().get(i))) {
+    	  tableItems.add((tableVehicle.getItems().get(i)));
+    	  while(!tableItems.isEmpty()) {
+    	    	
+    	    	System.out.println("Vehicle: " + tableItems.pop().toString());
+    	    }
         tableVehicle.scrollTo(i);
         tableVehicle.getSelectionModel().select(i);
         return;
       }
+      
+      else {
+    	  if(tableItems.size() > 0) {
+    		  tableItems.pop();
+    	  }
+      }
     }
+    
+    
   }
 
-  /** Sets up the table columns with their respective properties. */
   private void setUpTableColumns() {
     setUpTableColumn(colId, "vehicleId", 30);
     setUpTableColumn(colMakeYear, "makeYear", 40);
@@ -171,20 +164,12 @@ public class ManageController extends Controller {
     configureTable();
   }
 
-  /**
-   * Sets up a table column with the specified properties.
-   *
-   * @param column the table column
-   * @param property the property name
-   * @param width the column width
-   */
   private void setUpTableColumn(TableColumn<Vehicle, ?> column, String property, double width) {
     column.setCellValueFactory(new PropertyValueFactory<>(property));
     column.setPrefWidth(width);
     column.setResizable(false);
   }
 
-  /** Sets up the availability column with custom cell rendering. */
   private void setUpAvailabilityColumn() {
     colAvail.setCellValueFactory(new PropertyValueFactory<>("availability"));
     colAvail.setCellFactory(
@@ -208,7 +193,6 @@ public class ManageController extends Controller {
     colAvail.setResizable(false);
   }
 
-  /** Configures the table properties. */
   private void configureTable() {
     tableVehicle.setPlaceholder(new Label(""));
     tableVehicle.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -216,7 +200,6 @@ public class ManageController extends Controller {
     tableVehicle.setItems(dataModel.getVehicleList());
   }
 
-  /** Sets up the view button column. */
   private void setUpViewButtonCol() {
     colView.setCellFactory(
         param ->
@@ -242,11 +225,6 @@ public class ManageController extends Controller {
     colView.setResizable(false);
   }
 
-  /**
-   * Creates the view button with its properties and icon.
-   *
-   * @return the view button
-   */
   private Button createViewButton() {
     Button viewButton = new Button();
     viewButton.getStyleClass().add("button-view");
@@ -262,12 +240,6 @@ public class ManageController extends Controller {
     return viewButton;
   }
 
-  /**
-   * Validates the vehicle fields in the form.
-   *
-   * @param action the action being performed ("save" or "update")
-   * @return true if the fields are valid, false otherwise
-   */
   private boolean validateVehicleFields(String action) {
     String id = idLbl.getText();
     String brand = txtBrand.getText();
@@ -307,11 +279,6 @@ public class ManageController extends Controller {
     return true;
   }
 
-  /**
-   * Handles the view action for a vehicle.
-   *
-   * @param vehicle the vehicle to view
-   */
   private void handleViewAction(Vehicle vehicle) {
     showVehiclePane(true);
     vehiclePane.requestFocus();
@@ -329,7 +296,6 @@ public class ManageController extends Controller {
     populateVehicleFields(vehicle);
   }
 
-  /** Handles the add action for a new vehicle. */
   private void handleAddAction() {
     titleLbl.setText("Add New Vehicle");
     showVehiclePane(true);
@@ -342,21 +308,11 @@ public class ManageController extends Controller {
     isDefaultImage = true;
   }
 
-  /**
-   * Handles the action when a new vehicle is added.
-   *
-   * @param event The mouse event triggered by adding a new vehicle.
-   */
   @FXML
   void onAddNewVehicle(MouseEvent event) {
     handleAddAction();
   }
 
-  /**
-   * Handles the action when a vehicle is saved.
-   *
-   * @param event The mouse event triggered by saving a vehicle.
-   */
   @FXML
   void onSaveVehicle(MouseEvent event) {
     if (validateVehicleFields("save")) {
@@ -365,11 +321,6 @@ public class ManageController extends Controller {
     }
   }
 
-  /**
-   * Handles the action when a vehicle is updated.
-   *
-   * @param event The mouse event triggered by updating a vehicle.
-   */
   @FXML
   void onUpdateVehicle(MouseEvent event) {
     if (validateVehicleFields("update")) {
@@ -379,11 +330,6 @@ public class ManageController extends Controller {
     }
   }
 
-  /**
-   * Handles the action when a vehicle is deleted.
-   *
-   * @param event The mouse event triggered by deleting a vehicle.
-   */
   @FXML
   void onDeleteVehicle(MouseEvent event) {
     vehicledb.deleteVehicle(selectedVehicle);
@@ -392,22 +338,12 @@ public class ManageController extends Controller {
     showVehiclePane(false);
   }
 
-  /**
-   * Handles the action when the cancel button is clicked.
-   *
-   * @param event The mouse event triggered by canceling the current action.
-   */
   @FXML
   void onCancel(MouseEvent event) {
     clearTextFields();
     showVehiclePane(false);
   }
 
-  /**
-   * Handles the action when an image is imported.
-   *
-   * @param event The mouse event triggered by importing an image.
-   */
   @FXML
   void onImportImage(MouseEvent event) {
     vehiclePane.setDisable(true);
@@ -429,18 +365,12 @@ public class ManageController extends Controller {
     vehiclePane.setDisable(false);
   }
 
-  /**
-   * Shows or hides the vehicle pane.
-   *
-   * @param visible true to show, false to hide
-   */
   private void showVehiclePane(boolean visible) {
     vehiclePane.setVisible(visible);
     pane1.setDisable(visible);
     pane2.setDisable(visible);
   }
 
-  /** Clears the text fields in the vehicle form. */
   private void clearTextFields() {
     txtBrand.clear();
     txtModel.clear();
@@ -455,11 +385,6 @@ public class ManageController extends Controller {
     isDefaultImage = true;
   }
 
-  /**
-   * Populates the form fields with the vehicle's details.
-   *
-   * @param vehicle the vehicle whose details are to be displayed
-   */
   private void populateVehicleFields(Vehicle vehicle) {
     txtBrand.setText(vehicle.getBrand());
     txtColour.setText(vehicle.getColour());
@@ -480,11 +405,6 @@ public class ManageController extends Controller {
     }
   }
 
-  /**
-   * Creates a vehicle object from the form fields.
-   *
-   * @return the created vehicle
-   */
   private Vehicle createVehicleFromFields() {
     String brand = txtBrand.getText();
     String model = txtModel.getText();
@@ -509,11 +429,6 @@ public class ManageController extends Controller {
         econ);
   }
 
-  /**
-   * Stores or updates the vehicle in the database.
-   *
-   * @param vehicle the vehicle to be stored or updated
-   */
   private void storeOrUpdateVehicle(Vehicle vehicle) {
     if (vehicle.getVehicleId() == 0) {
       vehicledb.saveVehicle(vehicle);

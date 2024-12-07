@@ -8,11 +8,7 @@ import java.time.temporal.ChronoUnit;
 import javafx.beans.property.*;
 import javafx.scene.image.Image;
 
-/**
- * Singleton class that manages reservations, including details such as the selected vehicle,
- * pick-up and return dates, and total costs. It provides properties and methods to handle the
- * reservation process.
- */
+
 public class ReservationManager {
   private static ReservationManager instance;
 

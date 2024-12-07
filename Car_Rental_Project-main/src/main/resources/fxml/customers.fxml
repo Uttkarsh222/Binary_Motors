@@ -18,7 +18,7 @@
 
 <AnchorPane fx:id="customersPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="980.0" stylesheets="@../css/navbar.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="car_rental_book_and_manage.Controllers.CustomersController">
    <children>
-      <AnchorPane fx:id="pane1" layoutX="-1.0" layoutY="-2.0" prefHeight="606.0" prefWidth="181.0" styleClass="anchor-pane" stylesheets="@../css/navbar.css">
+      <AnchorPane fx:id="customerpane1" layoutX="-1.0" layoutY="-2.0" prefHeight="606.0" prefWidth="181.0" styleClass="anchor-pane" stylesheets="@../css/navbar.css">
          <children>
             <ImageView fitHeight="191.0" fitWidth="166.0" layoutX="3.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -84,20 +84,20 @@
             <Label layoutX="45.0" layoutY="140.0" text="Welcome Admin" textFill="WHITE" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="pane2" layoutX="184.0" layoutY="-5.0" prefHeight="609.0" prefWidth="795.0" stylesheets="@../css/font.css">
+      <AnchorPane fx:id="customerpane2" layoutX="184.0" layoutY="-5.0" prefHeight="609.0" prefWidth="795.0" stylesheets="@../css/font.css">
          <children>
             <Label layoutX="50.0" layoutY="25.0" prefHeight="39.0" prefWidth="309.0" text="View Customers">
                <font>
                   <Font name="Arial Bold" size="32.0" />
                </font>
             </Label>
-            <TableView fx:id="tableClient" layoutX="9.0" layoutY="137.0" prefHeight="458.0" prefWidth="782.0" stylesheets="@../css/navbar.css">
+            <TableView fx:id="customertableClient" layoutX="9.0" layoutY="137.0" prefHeight="458.0" prefWidth="782.0" stylesheets="@../css/navbar.css">
                <columns>
-                  <TableColumn fx:id="colId" editable="false" prefWidth="100" text="Client_id" />
-                  <TableColumn fx:id="colName" editable="false" prefWidth="175.15847778320312" text="First_name" />
-                  <TableColumn fx:id="colPhone" editable="false" prefWidth="160.84152221679688" text="Phone_number" />
-                  <TableColumn fx:id="colLicense" editable="false" prefWidth="146.24853515625" text="License_number" />
-                  <TableColumn fx:id="colUpdate" editable="false" prefWidth="117.46588134765625" text="Update" />
+                  <TableColumn fx:id="customercolId" editable="false" prefWidth="100" text="Client_id" />
+                  <TableColumn fx:id="customercolName" editable="false" prefWidth="175.15847778320312" text="First_name" />
+                  <TableColumn fx:id="customercolPhone" editable="false" prefWidth="160.84152221679688" text="Phone_number" />
+                  <TableColumn fx:id="customercolLicense" editable="false" prefWidth="146.24853515625" text="License_number" />
+                  <TableColumn fx:id="customercolUpdate" editable="false" prefWidth="117.46588134765625" text="Update" />
                </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -106,12 +106,12 @@
             <HBox fx:id="searchHbox" alignment="CENTER" layoutX="10.0" layoutY="78.0" prefHeight="30.0" prefWidth="379.0" stylesheets="@../css/navbar.css">
                <children>
                   <FontAwesomeIconView glyphName="SEARCH" wrappingWidth="14.21856689453125" />
-                  <TextField fx:id="searchTxt" prefHeight="25.0" prefWidth="216.0" promptText="Search">
+                  <TextField fx:id="customersearchTxt" prefHeight="25.0" prefWidth="216.0" promptText="Search">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                   </TextField>
-                  <ChoiceBox fx:id="searchChoiceBox" prefHeight="27.0" prefWidth="115.0">
+                  <ChoiceBox fx:id="customersearchChoiceBox" prefHeight="27.0" prefWidth="115.0">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
@@ -120,14 +120,14 @@
             </HBox>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="clientUpdatePane" layoutX="226.0" layoutY="80.0" prefHeight="417.0" prefWidth="426.0" styleClass="vehicle" stylesheets="@../css/view.css" visible="false">
+      <AnchorPane fx:id="customerClientUpdatePane" layoutX="226.0" layoutY="80.0" prefHeight="417.0" prefWidth="426.0" styleClass="vehicle" stylesheets="@../css/view.css" visible="false">
          <children>
             <VBox layoutX="101.0" layoutY="141.0" prefHeight="177.0" prefWidth="239.0">
                <children>
                   <HBox fx:id="fieldHbox" alignment="CENTER" prefHeight="35.0" prefWidth="238.0">
                      <children>
                         <Label prefHeight="16.0" prefWidth="24.0" text="ID:" />
-                        <TextField fx:id="txtID" editable="false" prefHeight="25.0" prefWidth="182.0" />
+                        <TextField fx:id="customertxtID" editable="false" prefHeight="25.0" prefWidth="182.0" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="10.0" />
@@ -136,7 +136,7 @@
                   <HBox fx:id="fieldHbox1" alignment="CENTER" prefHeight="35.0" prefWidth="238.0">
                      <children>
                         <Label text="First Name:" />
-                        <TextField fx:id="txtName" prefHeight="25.0" prefWidth="134.0" />
+                        <TextField fx:id="customertxtName" prefHeight="25.0" prefWidth="134.0" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="10.0" />
@@ -145,7 +145,7 @@
                   <HBox fx:id="fieldHbox11" alignment="CENTER" prefHeight="35.0" prefWidth="238.0">
                      <children>
                         <Label text="Phone Num:" />
-                        <TextField fx:id="txtPhone" prefHeight="25.0" prefWidth="130.0" />
+                        <TextField fx:id="customertxtPhone" prefHeight="25.0" prefWidth="130.0" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="10.0" />
@@ -154,7 +154,7 @@
                   <HBox fx:id="fieldHbox111" alignment="CENTER" prefHeight="35.0" prefWidth="238.0">
                      <children>
                         <Label text="License Num:" />
-                        <TextField fx:id="txtLicense" editable="false" prefHeight="25.0" prefWidth="119.0" />
+                        <TextField fx:id="customertxtLicense" editable="false" prefHeight="25.0" prefWidth="119.0" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="10.0" />
@@ -185,7 +185,7 @@
                   </Label>
                </children>
             </VBox>
-            <Label fx:id="clientNoLbl" layoutX="190.0" layoutY="28.0" text="00" textFill="WHITE">
+            <Label fx:id="customerclientNoLbl" layoutX="190.0" layoutY="28.0" text="00" textFill="WHITE">
                <font>
                   <Font size="19.0" />
                </font>

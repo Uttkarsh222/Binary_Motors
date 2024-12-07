@@ -14,96 +14,80 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-/**
- * Controller class for managing bookings. Handles the display, search, and filtering of
- * reservations in a table view.
- */
 public class BookingsController extends Controller {
 
-  @FXML private TableColumn<Reservation, Integer> colRentalId;
-  @FXML private TableColumn<Reservation, Integer> colClientId;
-  @FXML private TableColumn<Reservation, Integer> colVehicleId;
-  @FXML private TableColumn<Reservation, String> colVehicleReg;
-  @FXML private TableColumn<Reservation, String> colLicenseNum;
-  @FXML private TableColumn<Reservation, Double> colTotalRate;
-  @FXML private TableColumn<Reservation, String> colStartDate;
-  @FXML private TableColumn<Reservation, String> colReturnDate;
-  @FXML private TableColumn<Reservation, String> colInsuranceType;
+  @FXML private TableColumn<Reservation, Integer> bookingColRentalId;
+  @FXML private TableColumn<Reservation, Integer> bookingColClientId;
+  @FXML private TableColumn<Reservation, Integer> bookingColVehicleId;
+  @FXML private TableColumn<Reservation, String> bookingColVehicleReg;
+  @FXML private TableColumn<Reservation, String> bookingColLicenseNum;
+  @FXML private TableColumn<Reservation, Double> bookingColTotalRate;
+  @FXML private TableColumn<Reservation, String> bookingColStartDate;
+  @FXML private TableColumn<Reservation, String> bookingColReturnDate;
+  @FXML private TableColumn<Reservation, String> bookingColInsuranceType;
   @FXML private TableView<Reservation> tableReservation;
-  @FXML private TextField searchTxt;
-  @FXML private ChoiceBox<String> searchChoiceBox;
+  @FXML private TextField customersearchTxt;
+  @FXML private ChoiceBox<String> customersearchChoiceBox;
   @FXML private Button cancelBtn;
 
-  /** Initializes the controller and sets up the table columns, choice box, and search listener. */
   public void initialize() {
     SceneManager.setController(Scenes.BOOKINGS, this);
-    searchChoiceBox
+    customersearchChoiceBox
         .getItems()
         .addAll("Rental ID", "Client License", "Vehicle Reg", "Vehicle ID", "Client ID");
-    searchChoiceBox.setValue("Rental ID");
-    setUpTableColumns();
-    addSearchListener();
+    customersearchChoiceBox.setValue("Rental ID");
+    bookingsetUpTableColumns();
+    bookingaddSearchListener();
   }
 
-  /** Adds a listener to the search text field to filter reservations based on user input. */
-  private void addSearchListener() {
-    searchTxt
+  private void bookingaddSearchListener() {
+    customersearchTxt
         .textProperty()
         .addListener(
             (observable, oldValue, newValue) -> {
               if (newValue.isEmpty()) {
                 tableReservation.getSelectionModel().clearSelection();
               } else {
-                searchReservationBy(newValue);
+                bookingsearchReservationBy(newValue);
               }
             });
   }
 
-  /**
-   * Searches for reservations based on the selected search option and user input value.
-   *
-   * @param value the search input value
-   */
-  private void searchReservationBy(String value) {
-    String searchOption = searchChoiceBox.getValue();
+  private void bookingsearchReservationBy(String value) {
+    String searchOption = customersearchChoiceBox.getValue();
     switch (searchOption) {
       case "Rental ID":
-        searchReservation(
+        bookingsearchReservation(
             reservation -> String.valueOf(reservation.getReservationId()).equals(value));
         break;
       case "Vehicle Reg":
-        searchReservation(
+        bookingsearchReservation(
             reservation -> {
               String vehicleReg = reservation.getLicensePlate();
               return vehicleReg != null && vehicleReg.equalsIgnoreCase(value);
             });
         break;
       case "Client License":
-        searchReservation(
+        bookingsearchReservation(
             reservation -> {
               String licenseNo = reservation.getLicenseNo();
               return licenseNo != null && licenseNo.equalsIgnoreCase(value);
             });
         break;
       case "Vehicle ID":
-        searchReservation(reservation -> String.valueOf(reservation.getVehicleId()).equals(value));
+        bookingsearchReservation(reservation -> String.valueOf(reservation.getVehicleId()).equals(value));
         break;
       case "Client ID":
-        searchReservation(reservation -> String.valueOf(reservation.getClientId()).equals(value));
+        bookingsearchReservation(reservation -> String.valueOf(reservation.getClientId()).equals(value));
         break;
       default:
-        searchReservation(
+        bookingsearchReservation(
             reservation -> String.valueOf(reservation.getReservationId()).equals(value));
         break;
     }
   }
 
-  /**
-   * Filters the reservation list based on the given predicate and selects the matching reservation.
-   *
-   * @param predicate the predicate to filter reservations
-   */
-  private void searchReservation(Predicate<Reservation> predicate) {
+  private void bookingsearchReservation(Predicate<Reservation> predicate) {
     for (int i = 0; i < tableReservation.getItems().size(); i++) {
       if (predicate.test(tableReservation.getItems().get(i))) {
         tableReservation.scrollTo(i);
@@ -113,41 +97,35 @@ public class BookingsController extends Controller {
     }
   }
 
-  /** Sets up the table columns with appropriate property value factories and configurations. */
-  private void setUpTableColumns() {
-    colRentalId.setCellValueFactory(new PropertyValueFactory<>("reservationId"));
-    colClientId.setCellValueFactory(new PropertyValueFactory<>("clientId"));
-    colVehicleId.setCellValueFactory(new PropertyValueFactory<>("vehicleId"));
-    colVehicleReg.setCellValueFactory(new PropertyValueFactory<>("licensePlate"));
-    colLicenseNum.setCellValueFactory(new PropertyValueFactory<>("licenseNo"));
-    colTotalRate.setCellValueFactory(new PropertyValueFactory<>("totalRate"));
-    colStartDate.setCellValueFactory(new PropertyValueFactory<>("startDate"));
-    colReturnDate.setCellValueFactory(new PropertyValueFactory<>("returnDate"));
-    colInsuranceType.setCellValueFactory(new PropertyValueFactory<>("insuranceType"));
+  private void bookingsetUpTableColumns() {
+    bookingColRentalId.setCellValueFactory(new PropertyValueFactory<>("reservationId"));
+    bookingColClientId.setCellValueFactory(new PropertyValueFactory<>("clientId"));
+    bookingColVehicleId.setCellValueFactory(new PropertyValueFactory<>("vehicleId"));
+    bookingColVehicleReg.setCellValueFactory(new PropertyValueFactory<>("licensePlate"));
+    bookingColLicenseNum.setCellValueFactory(new PropertyValueFactory<>("licenseNo"));
+    bookingColTotalRate.setCellValueFactory(new PropertyValueFactory<>("totalRate"));
+    bookingColStartDate.setCellValueFactory(new PropertyValueFactory<>("startDate"));
+    bookingColReturnDate.setCellValueFactory(new PropertyValueFactory<>("returnDate"));
+    bookingColInsuranceType.setCellValueFactory(new PropertyValueFactory<>("insuranceType"));
 
     tableReservation.setPlaceholder(new Label(""));
     tableReservation.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     tableReservation.setFocusTraversable(false);
 
-    setTableColumnsResizable(false);
+    bookingsetTableColumnsResizable(false);
 
     tableReservation.setItems(dataModel.getReservationList());
   }
 
-  /**
-   * Sets the resizable property of all table columns.
-   *
-   * @param resizable the resizable property value
-   */
-  private void setTableColumnsResizable(boolean resizable) {
-    colRentalId.setResizable(resizable);
-    colClientId.setResizable(resizable);
-    colVehicleId.setResizable(resizable);
-    colVehicleReg.setResizable(resizable);
-    colLicenseNum.setResizable(resizable);
-    colTotalRate.setResizable(resizable);
-    colStartDate.setResizable(resizable);
-    colReturnDate.setResizable(resizable);
-    colInsuranceType.setResizable(resizable);
+  private void bookingsetTableColumnsResizable(boolean resizable) {
+    bookingColRentalId.setResizable(resizable);
+    bookingColClientId.setResizable(resizable);
+    bookingColVehicleId.setResizable(resizable);
+    bookingColVehicleReg.setResizable(resizable);
+    bookingColLicenseNum.setResizable(resizable);
+    bookingColTotalRate.setResizable(resizable);
+    bookingColStartDate.setResizable(resizable);
+    bookingColReturnDate.setResizable(resizable);
+    bookingColInsuranceType.setResizable(resizable);
   }
 }

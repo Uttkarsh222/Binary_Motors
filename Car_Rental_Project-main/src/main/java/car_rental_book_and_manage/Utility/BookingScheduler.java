@@ -39,11 +39,6 @@ public class BookingScheduler {
     processBookingsForDate(currentDate);
   }
 
-  /**
-   * Processes bookings for the specified date and drops them if necessary.
-   *
-   * @param date the date to process bookings for
-   */
   private void processBookingsForDate(LocalDate date) {
     List<Reservation> reservationsToDrop = reservationDB.getReservationsToDrop(date);
 
