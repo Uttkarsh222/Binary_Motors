@@ -1,0 +1,28 @@
+
+Detailed Instructions for Car Rental Management System Setup
+
+Prerequisites:
+- Java JDK 11 or higher.
+- Maven for project management.
+- MySQL for database management.
+
+Setup Instructions:
+1. Extract the provided ZIP file to a suitable location.
+2. Database Configuration:
+   - Launch MySQL and create a database named 'car_rental_db'.
+   - Navigate to 'project_assets/create_table.sql' and run this script to set up the database.
+
+3. Configure the database connection:
+   - Open 'src/main/resources/database.properties'.
+   - Enter your database details:
+     db.url=jdbc:mysql://localhost:3306/car_rental_db
+     db.user=<your_username>
+     db.password=<your_password>
+
+To Run the Application:
+- In the terminal, navigate to the project root.
+- Run:
+  mvn clean install       # Install dependencies and build the project.
+  mvn clean javafx:run    # Start the application.
+
+Ensure your environment variables for Java and Maven are set correctly.
