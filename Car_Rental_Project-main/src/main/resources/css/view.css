@@ -2,7 +2,7 @@
 
 /* General Styles */
 #vehiclePane,
-#clientUpdatePane {
+#customerClientUpdatePane {
     -fx-background-color: #ffffff;
     -fx-background-radius: 20px;
     -fx-padding: 20px;
@@ -11,14 +11,14 @@
 }
 
 #vehiclePane .text-field,
-#clientUpdatePane .text-field {
+#customerClientUpdatePane .text-field {
     -fx-background-color: transparent;
     -fx-text-fill: #707070; /* Slightly darker for better visibility */
     -fx-font-family: 'Roboto', 'Arial', sans-serif;
 }
 
 #vehiclePane .label,
-#clientUpdatePane .label {
+#customerClientUpdatePane .label {
     -fx-background-color: transparent;
     -fx-font-weight: bold;
     -fx-font-family: 'Roboto', 'Arial', sans-serif;

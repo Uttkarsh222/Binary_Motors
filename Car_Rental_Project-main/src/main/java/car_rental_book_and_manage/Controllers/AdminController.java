@@ -6,44 +6,39 @@ import car_rental_book_and_manage.Utility.SceneManager.Scenes;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class AdminController extends Controller {
 
-  @FXML private Label customerLbl;
-  @FXML private Label vehicleLbl;
-  @FXML private Label earningsLbl;
-  @FXML private Button dashBoardBtn;
-  @FXML private Button manageVehiclesButton;
-  @FXML private Button viewBookingsBtn;
-  @FXML private Button viewCustomersBtn;
+  @FXML private Label customerLabel;
+  @FXML private Label vehicleLabel;
+  @FXML private Label earningsLabel;
   @FXML private PieChart piechart;
 
   public void initialize() {
     SceneManager.setController(Scenes.ADMIN, this);
-    setupBindings();
-    updateDataModel();
-    initializePieChart();
-    addVehicleListChangeListener();
+    AdminBindingSetup();
+    AdminUpdateDataModel();
+    AdminInitializePieChart();
+    AdminAddVehicleListChangeListener();
   }
 
-  private void setupBindings() {
-    vehicleLbl.textProperty().bind(dataModel.numOfVehiclesProperty());
-    customerLbl.textProperty().bind(dataModel.numOfClientsProperty());
-    earningsLbl.textProperty().bind(dataModel.totalEarningsProperty());
+  private void AdminBindingSetup() {
+    vehicleLabel.textProperty().bind(dataModel.numOfVehiclesProperty());
+    customerLabel.textProperty().bind(dataModel.numOfClientsProperty());
+    earningsLabel.textProperty().bind(dataModel.totalEarningsProperty());
   }
 
-  private void updateDataModel() {
+  private void AdminUpdateDataModel() {
     dataModel.setNumOfVehicles(String.valueOf(vehicledb.getNumOfVehicles()));
     dataModel.setNumOfClients(String.valueOf(clientdb.getNumOfClients()));
   }
 
-  private void initializePieChart() {
+  private void AdminInitializePieChart() {
     updatePieChart();
   }
 
-  private void addVehicleListChangeListener() {
+  private void AdminAddVehicleListChangeListener() {
     dataModel
         .getVehicleList()
         .addListener((ListChangeListener<? super Vehicle>) change -> updatePieChart());

@@ -8,22 +8,22 @@
 
 
 /* Search Bar Styles */
-#searchTxt {
+#customersearchTxt {
     -fx-background-color: transparent;
 }
 
-#searchChoiceBox {
+#customersearchChoiceBox {
     -fx-background-color: transparent;
 }
 
-#searchChoiceBox .label {
+#customersearchChoiceBox .label {
     -fx-text-fill: #333333;
     -fx-font-size: 12px;
     -fx-alignment: center;
     -fx-font-family: 'Roboto', 'Arial', sans-serif;  /* Modern and readable font */
 }
 
-#searchChoiceBox .list-cell {
+#customersearchChoiceBox .list-cell {
     -fx-text-fill: #333333;
     -fx-font-family: 'Roboto', 'Arial', sans-serif;
 }

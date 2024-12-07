@@ -63,8 +63,8 @@ public class ManageController<T> extends Controller {
   @FXML private TextField txtEconomy;
   @FXML private Label titleLbl;
   @FXML private Label idLbl;
-  @FXML private ChoiceBox<String> searchChoiceBox;
-  @FXML private TextField searchTxt;
+  @FXML private ChoiceBox<String> customersearchChoiceBox;
+  @FXML private TextField customersearchTxt;
   @FXML private ImageView vehicleImageView;
 
   private String imageName;
@@ -87,12 +87,12 @@ public class ManageController<T> extends Controller {
   private void initializeChoiceBoxes() {
     choiceFuel.getItems().addAll("Regular", "Diesel", "Premium");
     choiceFuel.setValue("Regular");
-    searchChoiceBox.setValue("ID");
-    searchChoiceBox.getItems().addAll("ID", "Registration");
+    customersearchChoiceBox.setValue("ID");
+    customersearchChoiceBox.getItems().addAll("ID", "Registration");
   }
 
   private void addSearchListener() {
-    searchTxt
+    customersearchTxt
         .textProperty()
         .addListener(
             (observable, oldValue, newValue) -> {
@@ -105,7 +105,7 @@ public class ManageController<T> extends Controller {
   }
 
   private void searchVehicleBy(String value) {
-    String searchOption = searchChoiceBox.getValue();
+    String searchOption = customersearchChoiceBox.getValue();
     Predicate<Vehicle> predicate = getSearchPredicate(searchOption, value);
     searchVehicle(predicate);
   }

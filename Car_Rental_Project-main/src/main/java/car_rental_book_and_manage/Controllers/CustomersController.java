@@ -25,23 +25,22 @@ import javafx.scene.paint.Color;
 
 public class CustomersController extends Controller {
 
-  @FXML private AnchorPane clientUpdatePane;
-  @FXML private AnchorPane customersPane;
-  @FXML private AnchorPane pane1;
-  @FXML private AnchorPane pane2;
-  @FXML private TableColumn<Client, Integer> colId;
-  @FXML private TableColumn<Client, String> colLicense;
-  @FXML private TableColumn<Client, String> colName;
-  @FXML private TableColumn<Client, Integer> colPhone;
-  @FXML private TableColumn<Client, Void> colUpdate;
-  @FXML private TableView<Client> tableClient;
-  @FXML private ChoiceBox<String> searchChoiceBox;
-  @FXML private TextField searchTxt;
-  @FXML private TextField txtID;
-  @FXML private TextField txtLicense;
-  @FXML private TextField txtName;
-  @FXML private TextField txtPhone;
-  @FXML private Label clientNoLbl;
+  @FXML private AnchorPane customerClientUpdatePane;
+  @FXML private AnchorPane customerpane1;
+  @FXML private AnchorPane customerpane2;
+  @FXML private TableColumn<Client, Integer> customercolId;
+  @FXML private TableColumn<Client, String> customercolLicense;
+  @FXML private TableColumn<Client, String> customercolName;
+  @FXML private TableColumn<Client, Integer> customercolPhone;
+  @FXML private TableColumn<Client, Void> customercolUpdate;
+  @FXML private TableView<Client> customertableClient;
+  @FXML private ChoiceBox<String> customersearchChoiceBox;
+  @FXML private TextField customersearchTxt;
+  @FXML private TextField customertxtID;
+  @FXML private TextField customertxtLicense;
+  @FXML private TextField customertxtName;
+  @FXML private TextField customertxtPhone;
+  @FXML private Label customerclientNoLbl;
 
   public void initialize() {
     SceneManager.setController(Scenes.CUSTOMERS, this);
@@ -50,21 +49,21 @@ public class CustomersController extends Controller {
     clientdb.retrieveAllClients();
     setUpSearchChoiceBox();
     addSearchListener();
-    pane2.getStylesheets().add(getClass().getResource("/css/customcol.css").toExternalForm());
+    customerpane2.getStylesheets().add(getClass().getResource("/css/customcol.css").toExternalForm());
   }
 
   private void setUpSearchChoiceBox() {
-    searchChoiceBox.getItems().addAll("ID", "License Number");
-    searchChoiceBox.setValue("ID");
+    customersearchChoiceBox.getItems().addAll("ID", "License Number");
+    customersearchChoiceBox.setValue("ID");
   }
 
   private void addSearchListener() {
-    searchTxt
+    customersearchTxt
         .textProperty()
         .addListener(
             (observable, oldValue, newValue) -> {
               if (newValue.isEmpty()) {
-                tableClient.getSelectionModel().clearSelection();
+                customertableClient.getSelectionModel().clearSelection();
               } else {
                 searchClientBy(newValue);
               }
@@ -72,7 +71,7 @@ public class CustomersController extends Controller {
   }
 
   private void searchClientBy(String value) {
-    String searchOption = searchChoiceBox.getValue();
+    String searchOption = customersearchChoiceBox.getValue();
     switch (searchOption) {
       case "ID":
         searchClient(client -> String.valueOf(client.getClientId()).equals(value));
@@ -91,43 +90,43 @@ public class CustomersController extends Controller {
   }
 
   private void searchClient(Predicate<Client> predicate) {
-    for (int i = 0; i < tableClient.getItems().size(); i++) {
-      if (predicate.test(tableClient.getItems().get(i))) {
-        tableClient.scrollTo(i);
-        tableClient.getSelectionModel().select(i);
+    for (int i = 0; i < customertableClient.getItems().size(); i++) {
+      if (predicate.test(customertableClient.getItems().get(i))) {
+        customertableClient.scrollTo(i);
+        customertableClient.getSelectionModel().select(i);
         return;
       }
     }
   }
 
   private void setUpTableColumns() {
-    colId.setCellValueFactory(new PropertyValueFactory<>("clientId"));
-    colName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-    colPhone.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
-    colLicense.setCellValueFactory(new PropertyValueFactory<>("licenseNo"));
-    tableClient.setPlaceholder(new Label(""));
-    tableClient.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-    tableClient.setFocusTraversable(false);
-    tableClient.setItems(dataModel.getClientList());
+    customercolId.setCellValueFactory(new PropertyValueFactory<>("clientId"));
+    customercolName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+    customercolPhone.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
+    customercolLicense.setCellValueFactory(new PropertyValueFactory<>("licenseNo"));
+    customertableClient.setPlaceholder(new Label(""));
+    customertableClient.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+    customertableClient.setFocusTraversable(false);
+    customertableClient.setItems(dataModel.getClientList());
     setTableColumnsWidthAndResizable();
   }
 
   private void setTableColumnsWidthAndResizable() {
-    colId.setPrefWidth(120);
-    colName.setPrefWidth(180);
-    colPhone.setPrefWidth(170);
-    colLicense.setPrefWidth(170);
-    colUpdate.setPrefWidth(120);
+    customercolId.setPrefWidth(120);
+    customercolName.setPrefWidth(180);
+    customercolPhone.setPrefWidth(170);
+    customercolLicense.setPrefWidth(170);
+    customercolUpdate.setPrefWidth(120);
 
-    colId.setResizable(false);
-    colName.setResizable(false);
-    colPhone.setResizable(false);
-    colLicense.setResizable(false);
-    colUpdate.setResizable(false);
+    customercolId.setResizable(false);
+    customercolName.setResizable(false);
+    customercolPhone.setResizable(false);
+    customercolLicense.setResizable(false);
+    customercolUpdate.setResizable(false);
   }
 
   private void setUpUpdateButtonCol() {
-    colUpdate.setCellFactory(
+    customercolUpdate.setCellFactory(
         param ->
             new TableCell<>() {
               private final Button updateButton = createUpdateButton();
@@ -167,19 +166,19 @@ public class CustomersController extends Controller {
   }
   private void handleUpdateButtonAction(Client client) {
     showUpdatePane(true);
-    clientUpdatePane.requestFocus();
-    clientNoLbl.setText(String.valueOf(client.getClientId()));
-    txtID.setText(String.valueOf(client.getClientId()));
-    txtName.setText(client.getFirstName());
-    txtPhone.setText(String.valueOf(client.getPhoneNo()));
-    txtLicense.setText(client.getLicenseNo());
+    customerClientUpdatePane.requestFocus();
+    customerclientNoLbl.setText(String.valueOf(client.getClientId()));
+    customertxtID.setText(String.valueOf(client.getClientId()));
+    customertxtName.setText(client.getFirstName());
+    customertxtPhone.setText(String.valueOf(client.getPhoneNo()));
+    customertxtLicense.setText(client.getLicenseNo());
   }
 
 
   private void showUpdatePane(boolean show) {
-    clientUpdatePane.setVisible(show);
-    pane1.setDisable(show);
-    pane2.setDisable(show);
+    customerClientUpdatePane.setVisible(show);
+    customerpane1.setDisable(show);
+    customerpane2.setDisable(show);
   }
 
   private void handleUpdateClient(int clientId, String firstName, String phone, String license) {
@@ -190,8 +189,8 @@ public class CustomersController extends Controller {
 
   @FXML
   void onUpdateClient(MouseEvent event) {
-    String firstName = txtName.getText();
-    String phoneNo = txtPhone.getText();
+    String firstName = customertxtName.getText();
+    String phoneNo = customertxtPhone.getText();
     if (!ValidationManager.isNameValid(firstName)) {
       AlertManager.showAlert(
           AlertType.WARNING, "Invalid Name Format", "First Name Format Is Invalid");
@@ -203,8 +202,8 @@ public class CustomersController extends Controller {
       return;
     }
 
-    int clientId = Integer.parseInt(txtID.getText());
-    String licenseNo = txtLicense.getText();
+    int clientId = Integer.parseInt(customertxtID.getText());
+    String licenseNo = customertxtLicense.getText();
     handleUpdateClient(clientId, firstName, phoneNo, licenseNo);
   }
 
